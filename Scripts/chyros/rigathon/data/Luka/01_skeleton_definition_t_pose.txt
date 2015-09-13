@@ -1,0 +1,102 @@
+
+################################################################################
+#### [ SETUP ] Default Parameters
+################################################################################
+
+define_defaults	# DEFINE DEFAULT PARAMETERS
+		[CREATE_JOINT]
+			zeroScaleOrient=True orientJoint="xyz" secondaryAxisOrient="yup"
+
+		[MIRROR_JOINT]
+			mirrorBehavior=True mirrorYZ=True searchReplace=("_lt","_rt")
+;
+
+
+################################################################################
+#### [ SETUP ] Skeleton Definition
+################################################################################
+
+# ROOT joint
+	create_joint		root					 0.0	  0.0	  0.0
+	;
+
+# BODY joint chain
+	create_joint		pelvis					 0.0	  3.0	 94.0
+						spine_01				 0.0	  0.0	  7.0		location_relative
+						spine_02				 0.0	  0.0	 12.0		location_relative
+						spine_03				 0.0	  0.0	 12.0		location_relative
+						neck_01					 0.0	  0.0	 10.0		location_relative
+						neck_02					 0.0	  0.0	  4.0		location_relative
+						neck_03					 0.0	  0.0	  4.0		location_relative
+						head					 0.0	  0.0	  4.0		location_relative
+	;
+
+# Left LEG joint chain
+	create_joint		thigh_lt				 8.0	  3.0	 93.0
+						calf_lt					 0.0	  1.9	-40.5		location_relative
+						foot_lt					 0.0	  2.0	-38.9		location_relative
+						ball_lt					 0.0	-11.3	-10.6		location_relative
+						toe_lt					 0.0	 -9.0	  0.0		location_relative
+	;
+
+# Left ARM joint chain
+	create_joint		clavicle_lt				 3.0	  3.6	132.0
+						upperarm_lt				13.0	  0.0	 -4.6		location_relative
+						upperarm_twist_01_lt	 4.7	  0.0	  0.0		location_relative
+						upperarm_twist_02_lt	 4.7	  0.0	  0.0		location_relative
+						upperarm_twist_03_lt	 4.7	  0.0	  0.0		location_relative
+						lowerarm_lt				 4.7	  0.1	  0.0		location_relative
+						lowerarm_twist_01_lt	 5.5	 -0.1	  0.0		location_relative
+						lowerarm_twist_02_lt	 5.5	  0.0	  0.0		location_relative
+						lowerarm_twist_03_lt	 5.5	  0.0	  0.0		location_relative
+						hand_lt					 5.5	  0.0	  0.0		location_relative
+						hand_end_lt				 5.0	  0.0	  0.0		location_relative
+	;
+
+# Finger joint chains:
+	# Left PINKY finger joint chain
+		create_joint	pinky_base_lt			59.3	  5.9	127.4
+						pinky_01_lt				 4.7	  1.7	  0.0		location_relative
+						pinky_02_lt				 2.2	  0.5	  0.0		location_relative
+						pinky_03_lt				 1.5	  0.3	  0.0		location_relative
+						pinky_04_lt				 2.3	  0.5	  0.0		location_relative
+		;
+	# Left RING finger joint chain    	
+		create_joint	ring_base_lt			59.3	  4.8	127.4
+						ring_01_lt				 5.5	  0.8	  0.0		location_relative
+						ring_02_lt				 3.3	  0.6	  0.0		location_relative
+						ring_03_lt				 2.4	  0.3	  0.0		location_relative
+						ring_04_lt				 2.5	  0.5	  0.0		location_relative
+		;
+	# Left MIDDLE finger joint chain
+		create_joint	middle_base_lt			59.3	  3.7	127.4
+						middle_01_lt			 5.8	  0.1	  0.0		location_relative
+						middle_02_lt			 3.7	  0.0	  0.0		location_relative
+						middle_03_lt			 2.4	  0.0	  0.0		location_relative
+						middle_04_lt			 2.7	  0.0	  0.0		location_relative
+		;
+	# Left INDEX finger joint chain
+		create_joint	index_base_lt			59.3	  2.8	127.4
+						index_01_lt				 5.5	 -1.0	  0.0		location_relative
+						index_02_lt				 3.0	 -0.4	  0.0		location_relative
+						index_03_lt				 2.5	 -0.3	  0.0		location_relative
+						index_04_lt				 2.3	 -0.2	  0.0		location_relative
+		;
+	# Left THUMB finger joint chain
+		create_joint	thumb_base_lt			59.0	  1.7	127.4
+						thumb_01_lt				 2.0	 -1.8	 -0.4		location_relative
+						thumb_02_lt				 2.7	 -1.2	 -0.9		location_relative
+						thumb_03_lt				 2.8	 -0.7	 -1.0		location_relative
+		;
+
+# Combine joint chains
+	parent				hand_lt					[pinky_base_lt, ring_base_lt, middle_base_lt, index_base_lt, thumb_base_lt]
+						spine_03				[clavicle_lt]
+						pelvis					[thigh_lt]
+						root					[pelvis]	;
+
+# Mirror left joint chains to right
+	mirror_joint		clavicle_lt
+						thigh_lt
+	;
+

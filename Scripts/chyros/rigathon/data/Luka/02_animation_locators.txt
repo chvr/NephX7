@@ -1,0 +1,88 @@
+
+#############################################################################
+#### [ SETUP ] Query Joint Transforms
+#############################################################################
+
+
+# LEFT ======================================================================
+
+# Left joints
+	xform_ref			ball_lt					translation worldSpace
+						toe_lt					translation worldSpace
+						middle_01_lt			translation worldSpace
+	;
+
+
+# RIGHT =====================================================================
+
+# Right joints
+	xform_ref			ball_rt					translation worldSpace
+						toe_rt					translation worldSpace
+						middle_01_rt			translation worldSpace
+	;
+
+
+################################################################################
+#### [ SETUP ] Foot Roll / Tilt and Hand Side-Roll Locators
+################################################################################
+
+
+# LEFT =========================================================================
+
+# Create locators: HEEL_LT_LOC, BALL_LT_LOC, TOE_LT_LOC
+	create_locator		heel_lt_LOC
+						ball_lt_LOC
+						toe_lt_LOC	;
+	move				heel_lt_LOC				  8.2	 8.0	 0.0
+						ball_lt_LOC				  0.0	 0.0	 0.0		relative_to=ball_lt
+						toe_lt_LOC				  0.0	 0.0	 0.0		relative_to=toe_lt	;
+
+# Create locators: INNER_FOOT_LT_LOC, OUTER_FOOT_LT_LOC
+	create_locator		inner_foot_lt_LOC
+						outer_foot_lt_LOC	;
+	move				inner_foot_lt_LOC		  4.7	-4.9	 0.0
+						outer_foot_lt_LOC		 11.8	-4.9	 0.0	;
+
+# Create locators: INNER_PALM_LT_LOC, MIDDLE_PALM_LT_LOC, OUTER_PALM_LT_LOC
+	create_locator		inner_palm_lt_LOC
+						middle_palm_lt_LOC
+						outer_palm_lt_LOC	;
+	move				inner_palm_lt_LOC		  0.0	 0.0	 0.0		relative_to=middle_01_lt
+						middle_palm_lt_LOC		  0.0	 0.0	 0.0		relative_to=middle_01_lt
+						outer_palm_lt_LOC		  0.0	 0.0	 0.0		relative_to=middle_01_lt	;
+	rotate				inner_palm_lt_LOC									copy_from=middle_01_lt
+						middle_palm_lt_LOC									copy_from=middle_01_lt
+						outer_palm_lt_LOC									copy_from=middle_01_lt	;
+	move				inner_palm_lt_LOC		  0.0	-2.1	-1.9		relative	objectSpace		worldSpaceDistance
+						outer_palm_lt_LOC		  0.0	 3.6	-1.4		relative	objectSpace		worldSpaceDistance	;
+
+
+# RIGHT ========================================================================
+
+# Create locators: HEEL_RT_LOC, BALL_RT_LOC, TOE_RT_LOC
+	create_locator		heel_rt_LOC
+						ball_rt_LOC
+						toe_rt_LOC	;
+	move				heel_rt_LOC				 -8.2	 8.0	 0.0
+						ball_rt_LOC				  0.0	 0.0	 0.0		relative_to=ball_rt
+						toe_rt_LOC				  0.0	 0.0	 0.0		relative_to=toe_rt	;
+
+# Create locators: INNER_FOOT_RT_LOC, OUTER_FOOT_RT_LOC
+	create_locator		inner_foot_rt_LOC
+						outer_foot_rt_LOC	;
+	move				inner_foot_rt_LOC		 -4.7	-4.9	 0.0
+						outer_foot_rt_LOC		-11.8	-4.9	 0.0	;
+
+# Create locators: INNER_PALM_RT_LOC, MIDDLE_PALM_RT_LOC, OUTER_PALM_RT_LOC
+	create_locator		inner_palm_rt_LOC
+						middle_palm_rt_LOC
+						outer_palm_rt_LOC	;
+	move				inner_palm_rt_LOC		  0.0	 0.0	 0.0		relative_to=middle_01_rt
+						middle_palm_rt_LOC		  0.0	 0.0	 0.0		relative_to=middle_01_rt
+						outer_palm_rt_LOC		  0.0	 0.0	 0.0		relative_to=middle_01_rt	;
+	rotate				inner_palm_rt_LOC									copy_from=middle_01_rt
+						middle_palm_rt_LOC									copy_from=middle_01_rt
+						outer_palm_rt_LOC									copy_from=middle_01_rt	;
+	move				inner_palm_rt_LOC		  0.0	 2.1	 1.9		relative	objectSpace		worldSpaceDistance
+						outer_palm_rt_LOC		  0.0	-3.6	 1.4		relative	objectSpace		worldSpaceDistance	;
+

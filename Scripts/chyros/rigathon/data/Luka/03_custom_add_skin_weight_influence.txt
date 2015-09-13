@@ -1,0 +1,50 @@
+
+################################################################################
+#### [ SETUP ] Default Parameters
+################################################################################
+
+define_defaults	# DEFINE DEFAULT PARAMETERS
+		[BIND_SKIN]
+			bindMethod=2 heatmapFalloff=0.68 skinMethod=2 normalizeWeights=1
+			weightDistribution=0 maximumInfluences=2 obeyMaxInfluences=True
+			dropoffRate=4 removeUnusedInfluence=True
+;
+
+
+################################################################################
+#### [ SETUP ] Weight Influence
+################################################################################
+
+# Add weight influence
+	bind_skin			body_geo_SKN		[pelvis, body_GEO]
+						hair_geo_SKN		[pelvis, hair_GEO]
+						body_geo_SKN		removeInfluence="root"
+	;
+
+# Adjust HEAD and HAIR mesh weight influence
+	skin_vertices		body_geo_SKN		body_GEO					[0:35, 40:87, 727:756, 759:794]		[head=1]	# Head part
+						hair_geo_SKN		hair_GEO														[head=1]
+	;
+
+
+# LEFT =========================================================================
+
+	bind_skin			body_geo_SKN		removeInfluence="hand_end_lt"
+						body_geo_SKN		removeInfluence="pinky_04_lt"
+						body_geo_SKN		removeInfluence="ring_04_lt"
+						body_geo_SKN		removeInfluence="middle_04_lt"
+						body_geo_SKN		removeInfluence="index_04_lt"
+						body_geo_SKN		removeInfluence="thumb_03_lt"
+	;
+
+
+# RIGHT ========================================================================
+
+	bind_skin			body_geo_SKN		removeInfluence="hand_end_rt"
+						body_geo_SKN		removeInfluence="pinky_04_rt"
+						body_geo_SKN		removeInfluence="ring_04_rt"
+						body_geo_SKN		removeInfluence="middle_04_rt"
+						body_geo_SKN		removeInfluence="index_04_rt"
+						body_geo_SKN		removeInfluence="thumb_03_rt"
+	;
+

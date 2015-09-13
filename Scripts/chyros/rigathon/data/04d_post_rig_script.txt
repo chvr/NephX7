@@ -1,0 +1,188 @@
+
+#############################################################################
+#### [ POST ] Clean Up
+#############################################################################
+
+# Clean up joint hierarchies
+	delete				[hand_end_lt, pinky_04_lt, ring_04_lt, middle_04_lt, index_04_lt, thumb_03_lt]
+						[driver_hand_end_lt, driver_pinky_04_lt, driver_ring_04_lt, driver_middle_04_lt, driver_index_04_lt, driver_thumb_03_lt]
+						[result_hand_end_lt, result_pinky_04_lt, result_ring_04_lt, result_middle_04_lt, result_index_04_lt, result_thumb_03_lt]
+						[fk_hand_end_lt, fk_pinky_04_lt, fk_ring_04_lt, fk_middle_04_lt, fk_index_04_lt, fk_thumb_03_lt]
+	;
+
+
+# RIGHT =====================================================================
+
+# Clean up joint hierarchies
+	delete				[hand_end_rt, pinky_04_rt, ring_04_rt, middle_04_rt, index_04_rt, thumb_03_rt]
+						[driver_hand_end_rt, driver_pinky_04_rt, driver_ring_04_rt, driver_middle_04_rt, driver_index_04_rt, driver_thumb_03_rt]
+						[result_hand_end_rt, result_pinky_04_rt, result_ring_04_rt, result_middle_04_rt, result_index_04_rt, result_thumb_03_rt]
+						[fk_hand_end_rt, fk_pinky_04_rt, fk_ring_04_rt, fk_middle_04_rt, fk_index_04_rt, fk_thumb_03_rt]
+	;
+
+
+#############################################################################
+#### [ SCRIPT ] Arm Matcher Setup
+#############################################################################
+
+# Create ARM IK SNAP group
+	duplicate			ik_snap_wrist_lt_GRP				ik_wrist_lt_CTRL			parentOnly
+						ik_snapRef_wrist_lt_GRP				ik_wrist_lt_CTRL			parentOnly
+						ik_snapRef_elbow_lt_GRP				ik_elbow_lt_CTRL			parentOnly	;
+	parent				result_hand_lt						[ik_snap_wrist_lt_GRP]
+						arm_lt_GRP|DO_NOT_TOUCH_GRP			[ik_snapRef_wrist_lt_GRP, ik_snapRef_elbow_lt_GRP]	;
+
+# Create ARM FK SNAP joints
+	duplicate			fk_snap_upperarm_lt					fk_upperarm_lt_CTRL			parentOnly
+						fk_snap_lowerarm_lt					fk_lowerarm_lt_CTRL			parentOnly
+						fk_snap_hand_lt						fk_hand_lt_CTRL				parentOnly	;
+	parent				result_upperarm_lt					[fk_snap_upperarm_lt]
+						result_lowerarm_lt					[fk_snap_lowerarm_lt]
+						result_hand_lt						[fk_snap_hand_lt]	;
+
+# Unlock-and-unhide channels
+	set_attribute		ik_snap_wrist_lt_GRP.visibility		lock=False channelBox=True
+						ik_snapRef_wrist_lt_GRP.visibility	lock=False channelBox=True
+						ik_snapRef_elbow_lt_GRP.visibility	lock=False channelBox=True
+						fk_snap_upperarm_lt.visibility		lock=False channelBox=True
+						fk_snap_lowerarm_lt.visibility		lock=False channelBox=True
+						fk_snap_hand_lt.visibility			lock=False channelBox=True
+	;
+
+# Hide objects
+	set_attribute		ik_snap_wrist_lt_GRP.visibility		0
+						ik_snapRef_wrist_lt_GRP.visibility	0
+						ik_snapRef_elbow_lt_GRP.visibility	0
+						fk_snap_upperarm_lt.visibility		0
+						fk_snap_lowerarm_lt.visibility		0
+						fk_snap_hand_lt.visibility			0
+	;
+
+
+# RIGHT =====================================================================
+
+# Create ARM IK SNAP group
+	duplicate			ik_snap_wrist_rt_GRP				ik_wrist_rt_CTRL			parentOnly
+						ik_snapRef_wrist_rt_GRP				ik_wrist_rt_CTRL			parentOnly
+						ik_snapRef_elbow_rt_GRP				ik_elbow_rt_CTRL			parentOnly	;
+	parent				result_hand_rt						[ik_snap_wrist_rt_GRP]
+						arm_rt_GRP|DO_NOT_TOUCH_GRP			[ik_snapRef_wrist_rt_GRP, ik_snapRef_elbow_rt_GRP]	;
+
+# Create ARM FK SNAP joints
+	duplicate			fk_snap_upperarm_rt					fk_upperarm_rt_CTRL			parentOnly
+						fk_snap_lowerarm_rt					fk_lowerarm_rt_CTRL			parentOnly
+						fk_snap_hand_rt						fk_hand_rt_CTRL				parentOnly	;
+	parent				result_upperarm_rt					[fk_snap_upperarm_rt]
+						result_lowerarm_rt					[fk_snap_lowerarm_rt]
+						result_hand_rt						[fk_snap_hand_rt]	;
+
+# Unlock-and-unhide channels
+	set_attribute		ik_snap_wrist_rt_GRP.visibility		lock=False channelBox=True
+						ik_snapRef_wrist_rt_GRP.visibility	lock=False channelBox=True
+						ik_snapRef_elbow_rt_GRP.visibility	lock=False channelBox=True
+						fk_snap_upperarm_rt.visibility		lock=False channelBox=True
+						fk_snap_lowerarm_rt.visibility		lock=False channelBox=True
+						fk_snap_hand_rt.visibility			lock=False channelBox=True
+	;
+
+# Hide objects
+	set_attribute		ik_snap_wrist_rt_GRP.visibility		0
+						ik_snapRef_wrist_rt_GRP.visibility	0
+						ik_snapRef_elbow_rt_GRP.visibility	0
+						fk_snap_upperarm_rt.visibility		0
+						fk_snap_lowerarm_rt.visibility		0
+						fk_snap_hand_rt.visibility			0
+	;
+
+
+#############################################################################
+#### [ SCRIPT ] Leg Matcher Setup
+#############################################################################
+
+# Create LEG IK SNAP group
+	duplicate			ik_snap_foot_lt_GRP					ik_foot_lt_CTRL				parentOnly
+						ik_snapRef_foot_lt_GRP				ik_foot_lt_CTRL				parentOnly
+						ik_snapRef_knee_lt_GRP				ik_knee_lt_CTRL				parentOnly	;
+	parent				result_foot_lt						[ik_snap_foot_lt_GRP]
+						leg_lt_GRP|DO_NOT_TOUCH_GRP			[ik_snapRef_foot_lt_GRP, ik_snapRef_knee_lt_GRP]	;
+
+# Create LEG FK SNAP joints
+	duplicate			fk_snap_thigh_lt					fk_thigh_lt_CTRL			parentOnly
+						fk_snap_calf_lt						fk_calf_lt_CTRL				parentOnly
+						fk_snap_foot_lt						fk_foot_lt_CTRL				parentOnly
+						fk_snap_ball_lt						fk_ball_lt_CTRL				parentOnly	;
+	parent				result_thigh_lt						[fk_snap_thigh_lt]
+						result_calf_lt						[fk_snap_calf_lt]
+						result_foot_lt						[fk_snap_foot_lt]
+						result_ball_lt						[fk_snap_ball_lt]	;
+
+# Unlock-and-unhide channels
+	set_attribute		ik_snap_foot_lt_GRP.visibility		lock=False channelBox=True
+						ik_snapRef_foot_lt_GRP.visibility	lock=False channelBox=True
+						ik_snapRef_knee_lt_GRP.visibility	lock=False channelBox=True
+						fk_snap_thigh_lt.visibility			lock=False channelBox=True
+						fk_snap_calf_lt.visibility			lock=False channelBox=True
+						fk_snap_foot_lt.visibility			lock=False channelBox=True
+						fk_snap_ball_lt.visibility			lock=False channelBox=True
+	;
+
+# Hide objects
+	set_attribute		ik_snap_foot_lt_GRP.visibility		0
+						ik_snapRef_foot_lt_GRP.visibility	0
+						ik_snapRef_knee_lt_GRP.visibility	0
+						fk_snap_thigh_lt.visibility			0
+						fk_snap_calf_lt.visibility			0
+						fk_snap_foot_lt.visibility			0
+						fk_snap_ball_lt.visibility			0
+	;
+
+
+# RIGHT =====================================================================
+
+# Create LEG IK SNAP group
+	duplicate			ik_snap_foot_rt_GRP					ik_foot_rt_CTRL				parentOnly
+						ik_snapRef_foot_rt_GRP				ik_foot_rt_CTRL				parentOnly
+						ik_snapRef_knee_rt_GRP				ik_knee_rt_CTRL				parentOnly	;
+	parent				result_foot_rt						[ik_snap_foot_rt_GRP]
+						leg_rt_GRP|DO_NOT_TOUCH_GRP			[ik_snapRef_foot_rt_GRP, ik_snapRef_knee_rt_GRP]	;
+
+# Create LEG FK SNAP joints
+	duplicate			fk_snap_thigh_rt					fk_thigh_rt_CTRL			parentOnly
+						fk_snap_calf_rt						fk_calf_rt_CTRL				parentOnly
+						fk_snap_foot_rt						fk_foot_rt_CTRL				parentOnly
+						fk_snap_ball_rt						fk_ball_rt_CTRL				parentOnly	;
+	parent				result_thigh_rt						[fk_snap_thigh_rt]
+						result_calf_rt						[fk_snap_calf_rt]
+						result_foot_rt						[fk_snap_foot_rt]
+						result_ball_rt						[fk_snap_ball_rt]	;
+
+# Unlock-and-unhide channels
+	set_attribute		ik_snap_foot_rt_GRP.visibility		lock=False channelBox=True
+						ik_snapRef_foot_rt_GRP.visibility	lock=False channelBox=True
+						ik_snapRef_knee_rt_GRP.visibility	lock=False channelBox=True
+						fk_snap_thigh_rt.visibility			lock=False channelBox=True
+						fk_snap_calf_rt.visibility			lock=False channelBox=True
+						fk_snap_foot_rt.visibility			lock=False channelBox=True
+						fk_snap_ball_rt.visibility			lock=False channelBox=True
+	;
+
+# Hide objects
+	set_attribute		ik_snap_foot_rt_GRP.visibility		0
+						ik_snapRef_foot_rt_GRP.visibility	0
+						ik_snapRef_knee_rt_GRP.visibility	0
+						fk_snap_thigh_rt.visibility			0
+						fk_snap_calf_rt.visibility			0
+						fk_snap_foot_rt.visibility			0
+						fk_snap_ball_rt.visibility			0
+	;
+
+
+#############################################################################
+#### [ COMPATIBILITY ] Unreal Engine Skeleton Naming Standards
+#############################################################################
+
+# Rename suffixes of ROOT joint chain for Unreal Engine 4 compatibility
+	find_replace		root		_lt 		_l
+						root		_rt 		_r
+	;
+

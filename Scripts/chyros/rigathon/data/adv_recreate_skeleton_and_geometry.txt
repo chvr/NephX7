@@ -1,0 +1,204 @@
+
+#############################################################################
+#### [ ADVANCED ] Default Parameters
+#############################################################################
+
+define_defaults	# DEFINE DEFAULT PARAMETERS
+		[CREATE_JOINT]
+			zeroScaleOrient=True orientJoint="xyz" secondaryAxisOrient="yup"
+
+		[MIRROR_JOINT]
+			mirrorBehavior=True mirrorYZ=True searchReplace=("_lt","_rt")
+;
+
+
+#############################################################################
+#### [ ADVANCED ] Query Skeleton Transforms
+#############################################################################
+
+
+# CENTER ====================================================================
+
+# ROOT joint
+	xform_ref			root					translation worldSpace
+	;
+
+# BODY joint chain
+	xform_ref			pelvis					translation worldSpace
+						spine_01				translation worldSpace
+						spine_02				translation worldSpace
+						spine_03				translation worldSpace
+						neck_01					translation worldSpace
+						neck_02					translation worldSpace
+						neck_03					translation worldSpace
+						head					translation worldSpace
+						head_end				translation worldSpace
+	;
+
+
+# LEFT ======================================================================
+
+# Left LEG joint chain
+	xform_ref			thigh_lt				translation worldSpace
+						calf_lt					translation worldSpace
+						foot_lt					translation worldSpace
+						ball_lt					translation worldSpace
+						toe_lt					translation worldSpace
+	;
+
+# Left ARM joint chain
+	xform_ref			clavicle_lt				translation worldSpace
+						upperarm_lt				translation worldSpace
+						upperarm_twist_01_lt	translation worldSpace
+						upperarm_twist_02_lt	translation worldSpace
+						upperarm_twist_03_lt	translation worldSpace
+						lowerarm_lt				translation worldSpace
+						lowerarm_twist_01_lt	translation worldSpace
+						lowerarm_twist_02_lt	translation worldSpace
+						lowerarm_twist_03_lt	translation worldSpace
+						hand_lt					translation worldSpace
+						hand_end_lt				translation worldSpace
+	;
+
+# Finger joint chains:
+	# Left PINKY finger joint chain
+		xform_ref		pinky_base_lt			translation worldSpace
+						pinky_01_lt				translation worldSpace
+						pinky_02_lt				translation worldSpace
+						pinky_03_lt				translation worldSpace
+						pinky_04_lt				translation worldSpace
+		;
+	# Left RING finger joint chain
+		xform_ref		ring_base_lt			translation worldSpace
+						ring_01_lt				translation worldSpace
+						ring_02_lt				translation worldSpace
+						ring_03_lt				translation worldSpace
+						ring_04_lt				translation worldSpace
+		;
+	# Left MIDDLE finger joint chain
+		xform_ref		middle_base_lt			translation worldSpace
+						middle_01_lt			translation worldSpace
+						middle_02_lt			translation worldSpace
+						middle_03_lt			translation worldSpace
+						middle_04_lt			translation worldSpace
+		;
+	# Left INDEX finger joint chain
+		xform_ref		index_base_lt			translation worldSpace
+						index_01_lt				translation worldSpace
+						index_02_lt				translation worldSpace
+						index_03_lt				translation worldSpace
+						index_04_lt				translation worldSpace
+		;
+	# Left THUMB finger joint chain
+		xform_ref		thumb_base_lt			translation worldSpace
+						thumb_01_lt				translation worldSpace
+						thumb_02_lt				translation worldSpace
+						thumb_03_lt				translation worldSpace
+		;
+
+
+#############################################################################
+#### [ ADVANCED ] Recreate Character Geometry
+#############################################################################
+
+# Recreate CHARACTER_GEO
+	duplicate			character_GEO1			character_GEO	;
+	delete				[character_GEO]	;
+	rename				character_GEO1			character_GEO	;
+
+
+#############################################################################
+#### [ ADVANCED ] Recreate Skeleton Hierarchy
+#############################################################################
+
+# Delete ROOT joint chain
+	delete			root	;
+
+# ROOT joint
+	create_joint	root					0.0		0.0		0.0		relative_to=root
+	;
+
+# BODY joint chain
+	create_joint	pelvis					0.0		0.0		0.0		relative_to=pelvis
+					spine_01				0.0		0.0		0.0		relative_to=spine_01
+					spine_02				0.0		0.0		0.0		relative_to=spine_02
+					spine_03				0.0		0.0		0.0		relative_to=spine_03
+					neck_01					0.0		0.0		0.0		relative_to=neck_01
+					neck_02					0.0		0.0		0.0		relative_to=neck_02
+					neck_03					0.0		0.0		0.0		relative_to=neck_03
+					head					0.0		0.0		0.0		relative_to=head
+					head_end				0.0		0.0		0.0		relative_to=head_end
+	;
+
+# Left LEG joint chain
+	create_joint	thigh_lt				0.0		0.0		0.0		relative_to=thigh_lt
+					calf_lt					0.0		0.0		0.0		relative_to=calf_lt
+					foot_lt					0.0		0.0		0.0		relative_to=foot_lt
+					ball_lt					0.0		0.0		0.0		relative_to=ball_lt
+					toe_lt					0.0		0.0		0.0		relative_to=toe_lt
+	;
+
+# Left ARM joint chain
+	create_joint	clavicle_lt				0.0		0.0		0.0		relative_to=clavicle_lt
+					upperarm_lt				0.0		0.0		0.0		relative_to=upperarm_lt
+					upperarm_twist_01_lt	0.0		0.0		0.0		relative_to=upperarm_twist_01_lt
+					upperarm_twist_02_lt	0.0		0.0		0.0		relative_to=upperarm_twist_02_lt
+					upperarm_twist_03_lt	0.0		0.0		0.0		relative_to=upperarm_twist_02_lt
+					lowerarm_lt				0.0		0.0		0.0		relative_to=lowerarm_lt
+					lowerarm_twist_01_lt	0.0		0.0		0.0		relative_to=lowerarm_twist_01_lt
+					lowerarm_twist_02_lt	0.0		0.0		0.0		relative_to=lowerarm_twist_02_lt
+					lowerarm_twist_03_lt	0.0		0.0		0.0		relative_to=lowerarm_twist_03_lt
+					hand_lt					0.0		0.0		0.0		relative_to=hand_lt
+					hand_end_lt				0.0		0.0		0.0		relative_to=hand_end_lt
+	;
+
+# Left PINKY finger joint chain
+	create_joint	pinky_base_lt			0.0		0.0		0.0		relative_to=pinky_base_lt
+					pinky_01_lt				0.0		0.0		0.0		relative_to=pinky_01_lt
+					pinky_02_lt				0.0		0.0		0.0		relative_to=pinky_02_lt
+					pinky_03_lt				0.0		0.0		0.0		relative_to=pinky_03_lt
+					pinky_04_lt				0.0		0.0		0.0		relative_to=pinky_04_lt
+	;
+
+# Left RING finger joint chain
+	create_joint	ring_base_lt			0.0		0.0		0.0		relative_to=ring_base_lt
+					ring_01_lt				0.0		0.0		0.0		relative_to=ring_01_lt
+					ring_02_lt				0.0		0.0		0.0		relative_to=ring_02_lt
+					ring_03_lt				0.0		0.0		0.0		relative_to=ring_03_lt
+					ring_04_lt				0.0		0.0		0.0		relative_to=ring_04_lt
+	;
+
+# Left MIDDLE finger joint chain
+	create_joint	middle_base_lt			0.0		0.0		0.0		relative_to=middle_base_lt
+					middle_01_lt			0.0		0.0		0.0		relative_to=middle_01_lt
+					middle_02_lt			0.0		0.0		0.0		relative_to=middle_02_lt
+					middle_03_lt			0.0		0.0		0.0		relative_to=middle_03_lt
+					middle_04_lt			0.0		0.0		0.0		relative_to=middle_04_lt
+	;
+
+# Left INDEX finger joint chain
+	create_joint	index_base_lt			0.0		0.0		0.0		relative_to=index_base_lt
+					index_01_lt				0.0		0.0		0.0		relative_to=index_01_lt
+					index_02_lt				0.0		0.0		0.0		relative_to=index_02_lt
+					index_03_lt				0.0		0.0		0.0		relative_to=index_03_lt
+					index_04_lt				0.0		0.0		0.0		relative_to=index_04_lt
+	;
+
+# Left THUMB finger joint chain
+	create_joint	thumb_base_lt			0.0		0.0		0.0		relative_to=thumb_base_lt
+					thumb_01_lt				0.0		0.0		0.0		relative_to=thumb_01_lt
+					thumb_02_lt				0.0		0.0		0.0		relative_to=thumb_02_lt
+					thumb_03_lt				0.0		0.0		0.0		relative_to=thumb_03_lt
+	;
+
+# Combine joint chains
+	parent			hand_lt					[pinky_base_lt, ring_base_lt, middle_base_lt, index_base_lt, thumb_base_lt]
+					spine_03				[clavicle_lt]
+					pelvis					[thigh_lt]
+					root					[pelvis]	;
+
+# Mirror left joint chains to right
+	mirror_joint	clavicle_lt
+					thigh_lt
+	;
+

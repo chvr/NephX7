@@ -1,0 +1,106 @@
+
+#############################################################################
+#### [ SETUP ] Default Parameters
+#############################################################################
+
+define_defaults	# DEFINE DEFAULT PARAMETERS
+		[CREATE_JOINT]
+			zeroScaleOrient=True orientJoint="xyz" secondaryAxisOrient="yup"
+
+		[MIRROR_JOINT]
+			mirrorBehavior=True mirrorYZ=True searchReplace=("_lt","_rt")
+;
+
+
+#############################################################################
+#### [ SETUP ] Skeleton Definition
+#############################################################################
+
+# ROOT joint
+	create_joint	root					   0.00	   0.00	   0.00
+	;
+
+# BODY joint chain
+	create_joint	pelvis					   0.00	   4.95	  85.88
+					spine_01				   0.00	   0.00	  13.36		location_relative
+					spine_02				   0.00	   0.00	  11.64		location_relative
+					spine_03				   0.00	   0.00	  12.56		location_relative
+					neck_01					   0.00	   0.13	  10.85		location_relative
+					neck_02					   0.00	  -0.71	   2.91		location_relative
+					neck_03					   0.00	  -0.80	   2.65		location_relative
+					head					   0.00	  -1.26	   3.44		location_relative
+					head_end				   0.00    0.00   12.87		location_relative
+	;
+
+# Left LEG joint chain
+	create_joint	thigh_lt				   8.23	   4.95	  88.35
+					calf_lt					   0.00	  -2.20	 -35.13		location_relative
+					foot_lt					   0.00	   1.79	 -46.66		location_relative
+					ball_lt					   0.00	  -8.76	  -6.68		location_relative
+					toe_lt					   0.00	  -4.78	   0.00		location_relative
+	;
+
+# Left ARM joint chain
+	create_joint	clavicle_lt				   2.37	   4.95	 132.64
+					upperarm_lt				   9.68	   0.00	  -4.46		location_relative
+					upperarm_twist_01_lt	   1.91	  -0.27	  -4.34		location_relative
+					upperarm_twist_02_lt	   1.91	  -0.27	  -4.34		location_relative
+					upperarm_twist_03_lt	   1.91	  -0.27	  -4.34		location_relative
+					lowerarm_lt				   1.91	  -0.27	  -4.34		location_relative
+					lowerarm_twist_01_lt	   2.31	  -0.79	  -5.26		location_relative
+					lowerarm_twist_02_lt	   2.31	  -0.79	  -5.26		location_relative
+					lowerarm_twist_03_lt	   2.31	  -0.79	  -5.26		location_relative
+					hand_lt					   2.31	  -0.79	  -5.26		location_relative
+					hand_end_lt				   2.31	  -0.79	  -5.26		location_relative
+	;
+
+# Left PINKY finger joint chain
+	create_joint	pinky_base_lt			  29.83	   3.45	  87.69
+					pinky_01_lt				   0.95	   0.38	  -3.30		location_relative
+					pinky_02_lt				   0.57	   0.11	  -2.87		location_relative
+					pinky_03_lt				   0.46	  -0.06	  -2.38		location_relative
+					pinky_04_lt				   0.48	  -0.04	  -1.45		location_relative
+	;
+
+# Left RING finger joint chain
+	create_joint	ring_base_lt			  29.72	   2.19	  87.68
+					ring_01_lt				   1.59	   0.12	  -3.30		location_relative
+					ring_02_lt				   0.72	  -0.12	  -3.38		location_relative
+					ring_03_lt				   0.46	  -0.03	  -2.93		location_relative
+					ring_04_lt				   0.74	  -0.13	  -2.22		location_relative
+	;
+
+# Left MIDDLE finger joint chain
+	create_joint	middle_base_lt			  29.62	   0.96	  87.68
+					middle_01_lt			   1.54	  -0.27	  -3.30		location_relative
+					middle_02_lt			   0.89	  -0.14	  -3.54		location_relative
+					middle_03_lt			   0.43	  -0.05	  -2.98		location_relative
+					middle_04_lt			   0.81	  -0.04	  -2.42		location_relative
+	;
+
+# Left INDEX finger joint chain
+	create_joint	index_base_lt			  29.52	  -0.32	  87.67
+					index_01_lt				   0.78	  -0.61	  -3.31		location_relative
+					index_02_lt				   0.67	  -0.21	  -3.32		location_relative
+					index_03_lt				   0.59	  -0.03	  -2.84		location_relative
+					index_04_lt				   0.84	  -0.09	  -2.53		location_relative
+	;
+
+# Left THUMB finger joint chain
+	create_joint	thumb_base_lt			  28.54	  -0.81	  87.66
+					thumb_01_lt				  -0.88	  -1.19	  -2.62		location_relative
+					thumb_02_lt				   0.13	  -0.30	  -2.13		location_relative
+					thumb_03_lt				   0.84	  -0.14	  -2.54		location_relative
+	;
+
+# Combine joint chains
+	parent			hand_lt					[pinky_base_lt, ring_base_lt, middle_base_lt, index_base_lt, thumb_base_lt]
+					spine_03				[clavicle_lt]
+					pelvis					[thigh_lt]
+					root					[pelvis]	;
+
+# Mirror left joint chains to right
+	mirror_joint	clavicle_lt
+					thigh_lt
+	;
+

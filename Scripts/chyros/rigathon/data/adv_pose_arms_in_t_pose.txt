@@ -1,0 +1,66 @@
+
+#############################################################################
+#### [ SETUP ] Pose Arms in T-Pose
+#############################################################################
+
+# Query arm joints
+	xform_ref			upperarm_lt				translation worldSpace
+						hand_lt					translation worldSpace
+	;
+
+# Create IK spline handle: ARM_LT_HDL
+	ik_handle			arm_lt_HDL				upperarm_lt					hand_lt						solver="ikRPsolver"	;
+	rename				effector1				arm_lt_EFF	;
+
+# Extend ARM_LT_HDL 2000 units from UPPERARM_LT
+	move				arm_lt_HDL				2000.0		 0.0	0.0		relative_to=upperarm_lt
+	;
+
+# Query HAND_LT joint
+	xform_ref			hand_lt												translation worldSpace
+	;
+
+# Move ARM_LT_HDL back to HAND_LT
+	move				arm_lt_HDL				   0.0		 0.0	0.0		relative_to=hand_lt
+	;
+
+# Delete IK Handle and its related objects
+	delete				[arm_lt_HDL, arm_lt_EFF]
+	;
+
+# Adjust elbow joint
+	move				lowerarm_lt				   0.0		 0.1	0.0		[rotatePivot, scalePivot]	relative
+	;
+
+
+# RIGHT =====================================================================
+
+# Query arm joints
+	xform_ref			upperarm_rt				translation worldSpace
+						hand_rt					translation worldSpace
+	;
+
+# Create IK spline handle: ARM_RT_HDL
+	ik_handle			arm_rt_HDL				upperarm_rt					hand_rt						solver="ikRPsolver"	;
+	rename				effector1				arm_rt_EFF	;
+
+# Extend ARM_RT_HDL 2000 units from UPPERARM_RT
+	move				arm_rt_HDL				-2000.0		 0.0	0.0		relative_to=upperarm_rt
+	;
+
+# Query HAND_RT joint
+	xform_ref			hand_rt												translation worldSpace
+	;
+
+# Move ARM_RT_HDL back to HAND_RT
+	move				arm_rt_HDL				    0.0		 0.0	0.0		relative_to=hand_rt
+	;
+
+# Delete IK Handle and its related objects
+	delete				[arm_rt_HDL, arm_rt_EFF]
+	;
+
+# Adjust elbow joint
+	move				lowerarm_rt				    0.0		 0.1	0.0		[rotatePivot, scalePivot]	relative
+	;
+

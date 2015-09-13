@@ -1,0 +1,195 @@
+create sword joint chain
+create driver joint chain
+
+
+# Create space switcher: BACK
+	create_locator		back_SPACE	;
+	move				back_SPACE					0.0		0.0		0.0			relative_to=head	;
+	duplicate			headShoulder_SPACE				back_SPACE
+						headBody_SPACE					back_SPACE
+						headRoot_SPACE					back_SPACE	;
+	parent				fk_head							[headNeck_SPACE]
+						ik_shoulder						[headShoulder_SPACE]
+						body_GRP|DO_NOT_TOUCH_GRP		[headBody_SPACE]
+						character_CTRL					[headRoot_SPACE]	;
+create sword space
+move swd spc to back spc
+
+
+
+-------------------------
+
+
+
+* NEW
+0. allow define_defualts in rig_script to make #COMMENT optional
+0a. # check decimal numbers for parser
+1. arm twist is opposite
+2. shoulder translation should be opposite
+
+* rig_script.txt
+
+# IMPTNTs
+#	1. shoulder should be mirrored
+#	2. hand rotation shouldn't be mirrored
+#	3. Neck IK fix?
+# Workflow:
+#	1. Load UI
+#	2. Click Generate Skeleton (output-skeleton.py) / can be skeleton schema
+#	3. Click Create Rig Controls (output-rig-controls.py)
+#	4. Enables controls
+#	5. [advanced] Update Rig Controls script
+# Files:
+#	rigathon.py							main file
+#	x	rigathon/data/default_paramstxt
+#	x	rigathon/data/skeleton_definition.txt
+#	x	rigathon/data/pre-rig-script.txt
+#	x	rigathon/data/rig-script.txt
+#	x	rigathon/data/post-rig-script.txt
+#	x	rigathon/script/UI.py						UI only
+#	x	rigathon/script/parser.py					script parser
+#	x	rigathon/script/RigControl.py
+#	rigathon/script/matcher.py
+#	rigathon/generated/rig-controls.py
+#	rigathon/generated/skeleton.py
+#
+#	Rigathon.py									Main Script
+#	rigathon/script/RigathonUI.py				UI Script
+#	rigathon/script/RigathonParser.py			Parser / creates output-rigger.py
+#	rigathon/script/RigControl.py				Dependency - RigControl class
+#	rigathon/script/RigathonMatcher.py			Matcher Script
+#	rigathon/temp/rigger-script.py				generated rigger script
+#	rigathon/temp/skeleton-script.py			generated skeleton script
+# Wishlist?
+#	1. Export button
+#	2. IK / FK switch without matching
+# UI Suggestions
+#	- CTRL+Click = select both sides (left + right)
+#	- Drag MIDDLE Click = auto select
+#	- Click on empty panel = deselect all
+#	- compound finger selection (Compound, per finger (5), 
+#	- Save
+#	- Outliner, Channel Box / Layer Editor sub controls?
+# More questions
+#	- How to key it? seems not working
+# TODO - 2014-12-09
+#	- Rename FKElbowBlend to FKForeArmBlend
+#	- Matcher - fix right hand twist going from IK to FK (or vice-versa?)
+#	- Gimbal LT and RT are not rotating in opposite directions
+#	- Leg FK rotate inconsistency (THIGH vs the child FKs)
+#   - Not sure how to fix preferredAngle yet, but its not necessary atm
+#	- NEW:
+#		- IK / FK Switch without matching (checkbox)
+#		- Controls (UI) "Show Controls (dropdown):" [All, Automatic, FK Only, IK Only]
+#	- Matcher - fix twistinh issues when goes beyond limited length (stretch = 0)
+#	- Matcher - 1) Reset to bind pose 2) Refresh 3) Save Pose
+#	- HEAD STRETCH - a little bit wonky?
+#	- HEAD SQUASH doesn't work
+#	- Select all shouldn't select SETTINGS controls
+#   - Implement IK/FK matching
+#   - Improve performance
+#	- Implement better UI
+#	- fix head fk rotate twisting
+#	- Replace stretch COND with BLEND
+#	- inner root
+#	- Hide the joints (hard)
+#	- Avoid twisting (hard)
+#	x FIX weird HAND stretch
+#		x upperarm and lowerarm FK stretch
+#		x elbow snap, elbow stretch
+#	x BODY Stretch messes up the legs
+#   x Fix features on right side
+# IMPTNT Q
+# ? there's an inconsistency with upperarm_lt and result_clavicle_end_lt. Without it, they were the same
+# WISHLIST
+# 1. IK planting of knee and elbow without stretch
+# 	 x separate IK from upperarm elbow and IK from elbow to hand?
+# BUGS
+# 1. Head / Neck Stretch doesn't follow the control 100%? Probably due to the constraint fix with shoulder?
+# TODO
+# - Rename SKELETON to something else
+# - Rename arm_lt_IKC to hand_lt_IKC
+# - Rename arm_base_lt_IKS to arm_lt_IKC
+# x Rename arm_lt_gimbal_CTRL to FK...
+# - on duplicate command, instead of deleting child, use parentOnly attribute
+# x rename hand_base_lt to hand_base_lt_CTRL
+# 0. Part18 - missing KneeSnap normalize
+# x 1. Legs, hide IK / FK based on selection
+# x 2. autoKnee should be in ik_foot_lt_CTRL
+# 3. rename knee_CTRL to IK_
+# 4. remove head_GRP, use head_sys_GRP instead - OR IS IT?
+# 5. rename ROOT to world
+# x 6. Foot LEAN is reverse of TILT
+# [verify] 7. Foot FK rotation is not aligned with world
+# 8. Clean up (clean up tmp vars (=None??), unselect objects, etc...)
+# 9. support multiple object single attribute for setAtrr (i.e., visibility and rotateOrder)
+# QUESTIONS
+# 1. how to KNEE-IK / push-up
+# Videos
+# 6a. To enable character scaling, we need to parent ROOT and DRIVER_ROOT into CHARACTER_CTRL
+# 6b. Move body_CTRL and character_CTRL to Character_CTRL layer or something so as not to affect the visibility of other controls
+# [verify] 6c. CONST shoulder and neck... neck LOC Constraint should follow LOC parented to joint of shoulder instead of the control (try it)
+# 6d. changes from unreal:
+#		a. IK spine starts at spine_01 not in pelvis
+#		b. neck has no IK
+#		c. head_ctrl has only fk orientation... no translation space
+# 6e. toe and foot joints shouldn't touch the ground
+# NEED TO FIX
+# x 1. BODY not scaling properly
+# 2. NECK should follow SPINE_03 at all cost
+# TODO
+# 1) < rename_FKC to ???
+# 2) root not on 0, 0, 0 xyz? (inconsistent with char_CTRL pivot?)
+# 3) CONTROLS_FK - remove for now, or improve by adding CONTROLS_IK, and other control layers
+# 4) Refactor BODY to reuse pelvis IK and FK joints
+# x 5) update defaults: create_joint=[zeroScaleOrient=True, orientJoint="xyz", secondaryAxisOrient="yup"]
+# 6) Update joint positions
+# 7) Update mesh T-pose positions
+# 8) on "[LEG] Setup IK and FK controls", move duplicate, parent, and find_replace pelvis outside LEG section
+# 9) Use on other char (maya sample)
+# 10) Markings (ie., pelvis_LOC, neck_LOC) then map to generate real joints
+# 11) maya.cmds import
+# 12) parentConstraint fk_neck_01 with driver_spine_03
+
+
+
+====================================
+
+
+* parser.py
+
+
+# TODO:
+# - Support for no XYZ inputs (i.e., locator)
+# x rename object to obj to as not be confused with object=True in defaults
+# - Refactor relative_to, location_relative, etc... (i.e., use function for common tasks)
+# - namespace for default names (CREATE_LOCATOR.absolute)
+# - Allow no params (i.e., define defaults\n)  /  for comments
+# - Refactor using to_maya_obj and to_obj to get rid of too much string quotation handling
+# - Refactor SCRIPT_SYMBOL naming, other CHAR_/SCRIPT_ prefix naming
+# - Clean up vars (i.e., _tmp_shortname, _tmp_name)
+# - Refactor -> CHAR_QUOTE, ", join, etc...
+# - rename INSERT JOINT.prefix to something else as _l is not a prefix.. and suffix is not always a suffix
+# - on INSERT JOINT, custom attribs can be removed (orient, etc,..) since it will inherit the parent's
+# -- See how localPositionX could refactored as xform
+# **** NEW VERSION - START
+#   Joint Hierarchy
+#   class Joint:
+#		string name;
+#		string type;
+#		string parent?
+#
+#		name					type		parent
+#
+#		root					normal		None
+#		pelvis					ik / fk		roo
+#		upperarm_lt				ik / fk		clavicle_lt
+#		upperarm_twist_01_lt	twist		upperarm_lt
+#
+#	Sections: ARM, HAND, FEET
+#	Features: Stretch, Squash, IK / FK, etc...
+#				IK -> IK Twist, IK Stretch
+#				FK -> FK Stretch
+#
+# **** NEW VERSION - END
+# Global constant variable(s)

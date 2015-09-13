@@ -1,0 +1,75 @@
+
+################################################################################
+#### [ SETUP ] Groups
+################################################################################
+
+# Create control: OFFSET_CTRL
+	create_curve		offset_CTRL						[-30.00, -30.00, 0.00, 30.00, -30.00, 0.00, 30.00, 30.00, 0.00, -30.00, 30.00, 0.00, -30.00, -30.00, 0.00]	degree=1	;
+
+# Create control: ROOT_CTRL
+	create_curve		root_CTRL						[0.00, 4.24, 0.00, 4.24, 0.00, 0.00, 0.00, -4.24, 0.00, -4.24, 0.00, 0.00, 0.00, 4.24, 0.00, 0.00, 0.00, 7.07, 0.00, -4.24, 0.00, -4.24, 0.00, 0.00, 0.00, 0.00, 7.07, 4.24, 0.00, 0.00]	degree=1	;
+
+# Create RIG group structure
+	create_group		rig_GRP
+						rig_settings
+						master_sys_GRP
+						character_CTRL
+						ctrl_rig_GRP
+						body_sys_GRP
+						head_sys_GRP
+						arm_sys_GRP
+						hand_sys_GRP
+						leg_sys_GRP	;
+	parent				rig_GRP							[rig_settings, master_sys_GRP]
+						master_sys_GRP					[character_CTRL]
+						character_CTRL					[offset_CTRL, root_CTRL]
+						offset_CTRL						[ctrl_rig_GRP]
+						ctrl_rig_GRP					[body_sys_GRP, head_sys_GRP, arm_sys_GRP, hand_sys_GRP, leg_sys_GRP]	;
+
+
+################################################################################
+#### [ SETUP ] Layers
+################################################################################
+
+# Create layer: SKELETON
+	create_layer		Skeleton	;
+	set_attribute		Skeleton.color					0
+						Skeleton.displayType			0
+						Skeleton.visibility				0	;
+
+# Create layer: CONTROLS
+	create_layer		Controls	;
+	set_attribute		Controls.color					13
+						Controls.displayType			0	;
+
+# Create layer: CONTROLS_IK
+	create_layer		Controls_IK	;
+	set_attribute		Controls_IK.color				17
+						Controls_IK.displayType			0	;
+
+# Create layer: CONTROLS_FK
+	create_layer		Controls_FK	;
+	set_attribute		Controls_FK.color				18
+						Controls_FK.displayType			0	;
+
+# Create layer: CONTROLS_SPECIAL
+	create_layer		Controls_Special	;
+	set_attribute		Controls_Special.color			20
+						Controls_Special.displayType	0	;
+
+# Create layer: CONTROLS_SETTINGS
+	create_layer		Controls_Settings	;
+	set_attribute		Controls_Settings.color			9
+						Controls_Settings.displayType	0
+						Controls_Settings.visibility	0	;
+
+# Create layer: CONTROLS_CUSTOM
+	create_layer		Controls_Custom	;
+	set_attribute		Controls_Custom.color			0
+						Controls_Custom.displayType		0	;
+
+# Create layer: FBX_EXPORT
+	create_layer		FBX_Export	;
+	set_attribute		FBX_Export.color				0
+						FBX_Export.displayType			2	;
+

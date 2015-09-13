@@ -1,0 +1,971 @@
+09/29/2014 - Pre-Alpha v0.1.0001
+	- Project: rig_script
+	- First version - Pre-Alpha
+	- Excel-type script
+
+10/13/2014 - Pre-Alpha v0.1.0023
+	- Finished Torso part
+
+10/15/2014 - Pre-Alpha v0.2.0024
+	- Rewrote from scratch as Python script
+	- New name: rigathon
+
+10/23/2014 - Alpha v0.3.130
+	- Completed core
+
+10/24/2014 - Alpha v0.3.131
+	- Improved interface and script loading
+	- Custom menu
+
+10/25/2014 - Alpha v0.3.134
+	- New advanced feature: Reload module
+	- Improved logging
+	- Some fixes and clean ups
+
+10/26/2014 - Alpha v0.3.135
+	- Bind pose
+	- Improved logging even more
+	- Some UI and control refactorings
+
+10/26/2014 - Alpha v0.3.135
+	- Bind pose
+	- Improved logging even more
+	- Some UI and control refactorings
+
+01/02/2015 - Alpha v0.3.137
+	- Added 'Refresh' button on IK / FK Switcher
+	- Lt/Rt Forearm FK state now updates properly
+	- Updated saving and loading mechanism for poses - now it saves/loads per scene
+	- Ignore undo queue on saving poses
+	- Improved logging
+	- Code clean up
+
+01/02/2015 - Alpha v0.3.138
+	- Pose names can now be renamed
+	- Object selection now retains after saving a new pose
+	- Code clean up
+
+01/04/2015 - Alpha v0.3.139
+	- Added arm and leg settings in saving/loading poses
+	- Improved Save/Load pose UI
+	- Streamlined control layers
+	- Removed deprecated Floating Window feature
+
+01/05/2015 - Alpha v0.3.140
+	- Added new layer Controls_Custom and ability to add and/or remove custom controls from it for Saving/Loading Pose
+	- Added new layer FBX_Export and ability to add and/or remove objects from it for FBX Exporting
+	- Added Export feature
+
+01/06/2015 - Alpha v0.3.141
+	- Fixed export issue
+
+01/08/2015 - Alpha v0.3.144
+	- Added new control: offset_CTRL
+	- Corrected mesh T-Pose and adjusted joint transforms accordingly
+	- Tweaked size and position of some rig controls
+	- Fixed some CTRLs and locators not following their respective joint transforms
+	- Fixed export issue
+	- Fixed some rig control elements (root locators, transform group, etc...)
+	- Fixed some small bugs
+
+01/09-14/2015 - Alpha v0.3.145
+	- Fixed Head joint rotation space
+	- Fixed neck squash feature
+	- 95+ more saveable poses
+	- Pose category naming support
+	- Added rename on Save/Rename/Load Pose buttons' context menu
+	- Optimized rig controls to improve performance
+	- Added Picker controls for root_CTRL and offset_CTRL
+	- Fixes some issues with UI in Maya 2015
+	- Tweaked some minor functionalities
+	- Fixed some minor bugs
+
+01/15/2015 - Alpha v0.3.146
+	- Added Match IK / FK option for IK / FK Switcher
+	- Stretch and squash now blends smoothly
+	- Scaling character_CTRL now works properly
+	- Fixed ROOT joint FBX export issue at a cost of animation performance
+	- Updated the included sample mesh file (luka.mb) to work with the updated version of rigathon (not backwards compatible)
+	- Quality of life improvements:
+		- Resetting window doesn't create unnecessary config node anymore
+		- Re-ordered parts of rig scripts
+
+01/16-19/2015 - Alpha v0.3.147
+	- First pass on FBX Export - works a bit similar with Epic Games's FBX Export function (with the exceptiontion of blend shapes, weapon export, and multi animation export)
+	- Added Hand Picker Controls
+	- Added Arm and Leg RotationSpace options on Picker context menu
+	- Arm/Leg Settings Controls can now be selected via Control Picker context menu
+	- FK Elbow-to-Lowerarm and FK Elbow-to-Hand counterpart controls can now be selected using Rig Control Picker depending on IK/FK blend and FK Elbow blend values
+	- Added show/hide ChannelBox option in Advanced section
+	- Fixed missing FBX Export button
+	- Quality of life improvements:
+		- Added IK / FK color-coding on IK / FK switcher buttons
+		- Removed restriction on FK Forearm switch from FK Arm mode
+		- Impoved Num of Poses and Poses per Group functionality
+		- Renamed some labels for more readability
+	- Known bugs:
+		- Reloading modules while loading UI elements will crash Maya
+
+01/20-31/2015 - Alpha v0.3.148
+	- Saving and loading poses now shows how many controls are being saved or loaded
+	- FBX Export changes
+		- Added new 'Animation Ranges' panel
+		- Added new 'FBX Export Layers' panel
+		- FBX Export and its options has been removed from Advanced panel
+		- Improved inner workings of FBX export
+	- Added RotationSpace and TranslationSpace for IK Head in Rig Control Picker context menu
+	- Added MEL command messages on some controls
+	- Improved saving structure (Note: not backwards compatible with scenes that have used old version of Rigathon)
+	- Update some option names to a more meaningful name
+	- Fixed a major bug that crashes Maya when playing with Reload Module and Open rigathon window
+	- Fixed missing Channel Box option in advanced options
+	- Fixed character_CTRL control not influencing the mesh's movement
+	- Fixed slow Reset Bind Pose in Maya 2015
+	- Fully tested on Maya 2014 and tested minimally on Maya 2015
+
+02/01-05/2015 - Closed Beta v0.5.233
+	- Added 'Select All (with Keys only) option in picker context menu
+	- Added Arm and Leg setting controls in Picker controls
+	- Added 'Selection Sets' panel
+	- Added Run Euler Filter command in Advanced panel
+	- Added Rotation Interpolation selection in Advanced panel
+	- Added FPS selection (30 fps / 60 fps / 120 fps) in Advanced panel
+	- Added Control Scaling option in Advanced Panel
+	- Added setting controls in body rig control picker
+	- Added missing python import syntax in userSetup.py required in Maya 2014
+	- Controls now auto-refreshes on Redo, Undo or when time has changed
+	- Disabled undo/redo tracking when adding/removing objects from custom controls
+	- Removed false warning messages
+	- Removed Select Arm/Leg Settings control in Picker context menu
+	- Updated UI frames
+
+02/06-17/2015 - Closed Beta v0.5.234
+TODO:
+	- Added 'Characters' panel: Rigathon now supports 2 or more rigged characters via 'Characters' panel
+	- Rigathon UI is now broken into 2 different parts: 1) Rig a Character and 2) Add Character for Animation
+	- Streamlined working flow for rigging a character, adding character for animation, and exporting as FBX format
+	- New project directory structure
+	- Animation UI now remembers each panels' collapse/expand state
+	- Save/Load poses now doesn't affect character_CTRL's translation attributes
+	- Updated save/load poses saving mechanism
+	- Fixed duplicate issue on Selection Sets, Animation Sequences, and Export Layers
+	- Fixed issue when control scaling 2 or more controls
+	- Fixed Undo/Redo issues that sometimes causes Maya to crash
+	- Major code changes making this version not backwards compatible with earlier version of Rig-a-thon
+	- Various UI and naming tweaks and changes
+
+02/18-03/15/2015 - Closed Beta v0.5.273
+	- Rig-a-Character now supports A-Pose
+	- New advanced functions for Rig-a-Character:
+		- Pose Arms in T-Pose
+		- Freeze Skeleton Transformation
+		- Dump Skeleton Definition
+	- New sample file: Lhilium with Virgil Armor
+	- Added CreateWrap feature in Rigathon Parser
+	- Tweaked several scripts and functionalities
+	- Various fixes
+	- Added addInfluence support from Maya Skin Cluster to Rig-a-thon Parser
+	- Added sample character
+	- Improved script for skin weighting
+	- Exposed animation locators from automatic rigging script for more customizability
+	- AnimationUI settings now reload settings properly
+	- Export layer now auto-creates with default name when loading a rig file manually
+	- Added proper messaging when a control rig is not found
+	- You can now remove the first item in lists within panels
+	- Fixed issue in 'Poses / Group' not updating correctly
+	- Fixed Animation Sequence panel sorting issue
+	- Minor code fixes
+
+03/16-26/2015 - Closed Beta v0.5.297
+	- Added InitialPose animation sequence
+	- Replaced Freeze Joint Transformation function with Recreate Skeleton Hierarchy
+	- Replaced Wrap Deformer script with Copy Skin Weights
+	- Fixed some issues when copy-pasting keys
+	- Fixed matcher issues
+	- Fixed unnecessary head deformation of the included sample file
+	- Some minor tweaks
+
+Version 1.0.302
+===============
+	- First release - 3/27/2015
+	- Export and character names are now remembered
+	- Tweaked script for included sample file
+	- Fixed issue on saving and loading pose of selection controls
+	- Opening or creating a new scene now closes AnimationUI
+	- Opening AnimationUI now properly use namespace, if any
+
+	New Bugs:
+	- Load pose per selected control doesn't work; always load all controls
+Version 2.0
+===========
+	- Modular
+	- Easy to maintain and modify changes / Highly modifiable
+	- Input requirements and outputs (i.e., requires result_thigh_lt, creates IK version, output is now ik_thigh_lt)
+	- Variables! (headInput, headOutput, armInput, armOutput)
+	- Mapping (leftArm_result = result_arm_lt)
+	- Y-axis and Z-axis friendly
+	- T-pose and A-pose friendly
+	- Features! (arm skeleton, arm IK, arm FK, arm IK/FK, arm_elbow) (requirements heavy)
+	- Script re-write?
+	- Mesh list and mapping (Hair, Head, Body, Clothes, Armor, etc...)
+	- Customizable (pre- and post-scripts)
+
+	o Isolate arm/leg settings and elbow_CTRLs
+	o Double check if 2nd FREEZE from ik_shoulder_CTRL can be removed
+	o Double check if body_CTRL is parent constrained from result_XX_JNT... replace if necessary (weird translation)
+	Bug Report:
+		somehow FK controls are still vis and IK not showing
+	- Proxy version
+	- Auto-clean file before saving
+		- delete non deform
+		- delete undo history
+		- 
+
+	- Changing export name doesn't take effect until it lost focus
+	- Known issues on Sample File
+		- material names
+		- 
+	- Known Bugs:
+		o Stretch doesn't restore leg length 100% when KneeSnap is 1
+		o Fix ARM_LT_IKC on A-Pose (can mess up on T-Pose)
+		o Fix Copy-Paste keys
+			o freeze shoulder_lt/rt
+	- Caching system (Saving a Char, Exporting)
+	- Saving a character asks a user if he/she wants to immediately load the saved character
+	- Delete a character
+
+	- name 123 fails when saving (first character must be a letter)
+	- char list is not alphabetically arranged (due to case sensitive)
+	- Code clean up:
+			- Spaces and TAB count
+			- euler worldSpace (worldSpace is not needed - or does it produce the stretch issue? maybe not)
+			- (space);
+			- (non tab);
+			- messageBox / confirmBox from util <- make use of this
+			- Remove unnecessary logging
+			- Not found object (i.e., on skinning) should return WARN instead)
+	- Pose should remember IK / FK settings (posing doesn't restore IK / FK state)
+	- Delete hand_end_lt and _04_lt if exists, other than that probably we need to log as WARN
+		- is this still needed?
+	- Skinning should not fail if it wasn't found, but log as WARN
+		- is this still needed?
+	- FBX Export aesthetics -> Sort
+	- Increase textfield length of counter in Selection Sets and Export Layers
+	- Bake Dynamics
+		- Implement as necessary or as we get there
+	- Blend shapes
+	- Reset and Reload should be disabled while on evalDeferred mode or something
+
+NEW SUGGESTIONS:
+	- Skeleton mapper
+		- Step #1: Add minimal but critical joint markers
+		- Step #2: auto-calculate inbetween joints (i.e., for 3 twist joints, calculate diff)
+
+PENDING:
+- [low] Shoulder Translation
+- Complete all TODOs in rig_script
+- rename head_GRP head_neck_GRP
+- rename head_FKC to head_GRP
+- [low] Head vertices on skinning
+	- Pushed back on another model other than the stock (Luka)
+x ik_shoulder_CTRL now parent constrained from ik_shoulder instead of result_spine_03
+x A-Pose to T-Poser
+	x Not sure how yet
+x Locator Markers
+	x Step #0: Click Generator locators button (i.e, inner_ and outer_ for toe_LOC and palm_LOC for Roll attrib)
+	x Step #1: Auto map locators
+x Skeleton mapper (partial)
+x resize char selection listbox (no text bleeding)
+x Recheck head deformation
+x Revisit Stretch on arms/legs
+	x stretch IK arms to FK Forearms is wonky
+	x switching IK/FK leg reverses knee (similar to IK Arms when controls is stretched beyond and stretch=0 ?)
+x Create new anim w/ range 01-01 as T-Pose
+x Copy SkinWeight (convert from WrapDeformer to fix exporting to UE4; Use BindSkin default then Copy SkinWeights afterwards)
+P FK Forearm works fine with T-Pose, fix on Relaxed Pose (partial)
+x Fix Matcher
+x Ongoing Fix:
+	x ElbowHand control (still moving a bit)
+	D Stretch matcher doesn't work (created as new task)
+x New Bug: Stretch on matcher doesn't work
+x Fixed Reload Modules
+P Fixed matching issues
+x Re-aligned skeleton hierarchies
+x Updated control positioning
+x Any-pose friendly rigging
+	x Correct alignment even on any joint rotation
+		x cmds.xform('upperarm_twist_02_lt', query=True, rotation=True, worldSpace=True)
+		x cmds.move(0,0,50, 'pCube1', relative=True, objectSpace=True, worldSpaceDistance=True)
+	x Palm raise suddenly changed in directions
+x Latest Lhilium save file forgot to use elbow? Not bending...
+x Face/Head getting deformed by neck?
+o Retarget controls:
+	x Finger FK are big and not situated properly (incl. thumbs)
+	x Thumb compound
+	x Foot, Ball, Toe FK
+	x Foot IK, not centered and bigger than wanted
+x Zeroing out attribs messes up controls
+D Fixing FK Forearm (created anew as another fix task)
+	D Move freeze to post script
+	D Move ARM to T-Pose, rig with IKs, then move back to original pose
+x CreateWrap feature
+x Advanced Rig-a-Character:
+	x --Advanced--
+	x Freeze Joint Transform
+		x Note: This will delete any custom weights outside script. Are you sure?
+	x Pose Arms in T-Pose
+	x Dump Skeleton Definition
+D Close windows on Open / New
+x matcher still fails
+x Finalize button without requirements error (instead of translateX not found error message)
+	x Make proper error messages when certain obj not found
+x poses per group ui doesn't update or sync with values
+x deleting last item on panel lists deselect items
+x control scale deselects
+x selection sets select deselects - also on export
+	x check on custom layer
+x Export contraints failed
+	x Fixed by itself? Re-open if it persists
+D Unhide when character > 1
+x Hide 'Characters' by default
+D Warning: Skip curve ik_wrist_rt_CTRL_rotateZ because the command does0n't work for quaternion interpolation. # 
+	x can't be fixed
+x FBX Export no name when loading manually (as opposed to Add Character)
+x Characters doesn't clear out on New + Add Character
+x Pose num and group num should reset on AnimationUI
+x Clean up all script files
+x Test all features on referenced
+x Test all features on non-referenced
+x Restore translation (pose) except character_CTRL(only Rotate and Scale)?
+x Reset bind pose bug
+D error on selecting rigathon settings and then pressing V-1-> show Animation UI
+	D Stream line cmds.select
+	x fixed the real issuex Collapse settings
+x Workflow: Rig a Character
+		x Generate Skeleton
+		x Add Skin Weight Influence
+		x Create Rig Controls
+		x Save Character & Close
+			x -> Character Name:
+			x -> Save and 'New Scene'
+	x Add Character for Animation
+		x Listbox with character names
+		x 'Add' button
+			x -> Load via Reference
+			x -> Preload stuffs (i.e., load Luka:root and Luka:meshes to FBX Export layer)
+				x or perhaps load objects from FBX_Export layer and load it to FBX Export layer
+				x FBX Export changes:
+					x empty at first
+					x adds new item on 'add char for anim'
+	x Update export path to work similar with Save character
+	x Make AddCharacterUI code similar with RigACharacter
+x Workflow: Save & New
+	x Asks for a name
+	x Include data in the new file
+		x Luka:path
+	x Export path pass on UI
+	x Rename AddCharacter to AnimUI
+	x Add AddCharacterUI that get Character Name input from player
+	x Ask player for Character name before saving
+		x  Don't save if name already exists?
+	D /Projects
+		x /Characters
+		D Character.txt
+x Support 2 or more characters
+	x Allow 2 or more rigathon windows (ID per timestamp or char name?)
+x Update picker colors on switch
+x [low] Support for 2 or more characters
+x Load objects to Export Layer when character has been added
+x Close windows on New and Open file
+x Control Scale only works on selected character
+x Controls_Custom not found error
+x Error on non-referenced (# Error: AttributeError: file C:\$_Chyros\GameDev\Workspace\Python\rigathon\script\cnx_rigathon_logger.py line 18: 'int' object has no attribute 'replace' # )
+x Close UI on new scene
+x Test export
+x Setting a key then clicking IK / FK switcher crashes
+	x Can't replicate as of 2-10-2015 11:14 PM
+x Undoing crashed Maya
+	x Select all controls
+	x Rotate
+	x Press Z
+	x do another stuff
+D auto add Controls_Layer (if missing)
+x Auto activate reference on load
+	x currently bugged? not getting the active one?
+x fix in ui:
+	x if widget in ['ik_wrist_lt', 'fk_upperarm_lt', 'fk_lowerarm_lt', 'fk_hand_lt', 'fk_elbow_lowerarm_lt', 'fk_elbow_hand_lt', 'ik_wrist_rt', 'fk_upperarm_rt', 'fk_lowerarm_rt', 'fk_hand_rt', 'fk_elbow_lowerarm_rt', 'fk_elbow_hand_rt']:
+x Maya crashes on undo right after skinning
+x Maya crashes on reference
+x Support 2 or more characters
+x Load character rig option
+x New features:
+	x Character Prefix switcher
+	x References
+	x UI:
+		x [C] button
+		x Menus:
+			x None
+			x Luka
+			x CrimsonHeart
+		x Frame: [ Character References ]
+		x Startup menu:
+			x Create new character
+			x Load a rig file
+				x Enter name: press OK
+x FBX Export flow
+x Update selection on switch
+x Move About outside the class
+x Refresh on switch
+x Export and AnimSeq doubles up on load
+x Rig Control Picker flickers when adding via Character
+x AnimSeq and ExportUI doubling 
+x ControlScale saying no control selected
+x Bug when adding a char and AnimUI has been previously used with non referenced char
+x Undo must not messes up rig selection highlighting
+x Reload modules should close open windows
+x Fix save pose name bug
+x Update Editor on Show Anim UI
+x Rigathon auto-reloads on save issue
+x Export settings:
+	x 30 / 60 / 120 fps selection
+	x Rotation type (Quaternion, Euler, etc...)
+	x Run Eueler
+x Export bug, removes parentConstraint
+D Improve unloading/reloading of script jobs (fine for now)
+x Select All Keyed
+D IK / FK Matching on picker context menu
+x Control Scaling
+D Pose and settings -> Save to and load from file
+x Run Euler Filter On All?
+x Run Euler Filter On Selected?
+x no posed save at start up
+x controls lining
+	x Run Euler for anim
+x 30/60 FPS and Euler Filter
+x Remove undo on adding custom controls
+x Exporting weapon
+D skin should be weight-painted on the driver_root (aren't we done with this?)
+x FBX Export toggle button
+x End should always be > than Start (warn message on export)
+x AnimSeq and ExportLayers toggling
+x Show command message on:
+	D Rig Control Selection -> Rig Control Name (i.e., IK HEAD)
+		D or maybe not (might mess up with auto reselect; workaround is to print something?)
+	x IK / FK Switch
+x No undo history when adding/removing animlist and export_layer
+x [mid] reimplement Export function (similar to ART)
+	x completed 1st pass
+	x copy from ART at least
+x Export manager
+	x Exports character, weapons or custom
+	x Export multiple animation
+x Indicator on how may objects are saved (Pose)
+x Delete baked animation in root after export
+x Export checks
+	x End should be > than Start
+	x Export objects should exists before starting
+D root should only exist on export - speeds up the animation
+x Test on Maya 2015
+	x Reset to bind pose is slow on Maya 2015
+x Fix bug where Maya crashes when reloading modules while pose names are still getting updated
+x Reloading modules while loading UI elements will crash Maya
+x What's up with the crashes?
+	x RIG-V-1->Open crash
+	x * could be the ff.:
+		x controls
+		D missing imports?
+		x try deleting script jobs on reload modules
+x Fixed a major bug that crashes Maya when playing with Reload Module and Open rigathon window
+	x still persists when loading FBX export objects?
+	x kill with scene?
+x move the driver_root to its proper place where its not nullifying the movement of mesh when moving the root_CTRL
+D scale_constraint character_CTRL to driver_root_GRP - Fixed in a different way
+x Finally Test a Sword Anim
+x [assignment] Try animating character with weapon doing the ff.:
+	x THIS WORKS -> 1) Weapon is PARENT CONTRAINED to the hand and back slot
+	x SKIPPED -> 2) Weapon CTRL is PARENTED to the hand and back slot
+	x SKIPPED -> 3) If above does not work, find another ideas
+x BUG - Rotation of weapon (custom CTRL) not saving (or loading)? (not fixed but this shouldn't happen anyway)
+x Added Rotation and TranslationSpace on IK_Head picker context menu
+x When selecting with CTRL, gizmo should be on the clicked control
+x no control for elbow hand and elbow lowerarm FK controls yet
+D picker buttons for LEG and ARM settings (added rotationSpace on picker context menu instead)
+D move leg_xx_settings below arm_xx_settings (added rotationSpace on picker context menu instead)
+x [mid] no Picker for hand compound and finger controls yet
+	D add button to select custom CTRLs? (not needed yet)
+	D add button to select export CTRLs? (can be done with Layer -> Select Objs)
+D rename finger_base to finger_01
+x 2015 issues:
+	x About form is not auto-resizing - larger than normal
+	x Opening the main window doesn't focus automatically
+x pose_bind and pose_bind_default ID for settings.py (Gettable as public)
+D rename finger_base to finger_01 (root)
+	D result, fk, driver need to adjust as well
+x change condition to Blend?
+x ik/fk switching without matching
+x [BUG] driver_root being included in export
+	D fix is to rename driver_root to root forever?
+D Show Z-up Y-up on script buttons (can be done anyway by cliking Finalize)
+x stretch / squash on some controls (head, etc...)
+	x squash on head
+	D arms and legs? (skipped due to complex squash state; revisit as necessary)
+F [For Fun] Try with Maya Learning's mesh
+D change head IK to FK
+x [bug] the Head rotation space does not work on Body when moving shoulder?
+x Select All should also select custom CTRLs
+x Changeable Save/Load Pose count (i.e., 5, 10, 20, 50, 100)
+x [Bug] Advanced is now part of poses
+x1.  Dropdown 5, 10, 25, 50, 100 poses!
+	x add rename on context menu
+	D keep track of collapsed/non-collapsed poses
+	D Reset should also reset pose num and PpC (or maybe not? similar with IK / FK controlsa anyway)
+	x Annotation as frame name (incase it goes longer than the frame)
+	x frame per X poses
+	x category renaming
+	D MUST! Poses per Category must not go higher than Num of Poses
+	x Don't track undo/redo
+		x also on rig_settings
+	x Selection must remain the same
+	x Poses per Category should adjust (i.e, NoP25 PpC10 should not be possible, find a nice way)
+	x Fix 'None' issue on PpC
+	x saving CcP and NoP in rig_settings
+x New bug: auto knee
+x Picker for Offset and Root CTRL
+x Export System:
+	x bind skin to driver_root insted of root
+	x Delete root joint hierarchy after creating rig_ctrl (post-rig-script?)
+	x Recreate root and its orient/parent constraints on Pre-Export (pre-export script? rigathon-export.py?)
+	x Delete root joint hierarchy after export
+x [high] master_CTRL, root_CTRL is missing
+x [low] Feet IK controls should follow feet geo upon creation
+x [high] Fix export issue
+x [low] head_sys_GRP and neck_sys_GRP are empty
+x [high] Export button (requires layering) 
+	x cmds.file('test3.fbx', force=True, options='v=0;', typ='FBX export', preserveReferences=True, exportSelected=True)
+	x create Rigathon_Export layer (has to be in pre-rig_script.txt or something like that)
+	x add controls for export selection
+	D select should remain the same
+	x add custom export objects to post-rig script
+x Advanced controls:
+	x EXPORT
+	x Y-Up / Z-up
+x Ability to add/remove custom controls on poses
+	x Do we need this? I.e., sword movement is driven by character's left or right hand anyway. Possible use is for floating swords that moves/rotates independently from the character.
+x Auto add/remove controls for poses via Maya layers (default, custom, etc...)
+x [low] Hand joints are showing when hiding control layers
+x [high] Streamline layers for control (Controls_IK and Controls_FK only?) (update: coloring would change)
+x Remove 'floating window' feature - useless
+x Ability to rename pose names
+x Object selection should remain the same after saving a new pose
+x Ignore undo queue on saving poses
+x Add Refresh button on IK / FK Switcher
+x Rotation fix on some controls (Hand Lt and Rt)
+x SELECT ALL controls
+x Bind Pose and pose controls
+x ChyrosNX Maya Menu
+x Cleanup
+D Config for script directory searching (not needed anymore)
+D adjustable column size (not needed anymore)
+
+--------------
+
+CHALLENGES:
+	x Sword animation
+	- Sword combo
+	- 2 different sword animation
+	- Changeable head during gameplay
+	- Decapitation
+	- Blood
+	- Gore
+
+--------------
+
+, \['([^']+)'.*
+\tdef get_\1(self):\n\t\treturn self._util.to_node_name(self._ref_name, '\1_CTRL')\n
+
+, \['([^']+)'.*
+\t\U\1 = '\L\1_CTRL'
+
+, '([^']+)_CTRL'
+, self.\U\1
+
+('[^']+'),\s([^'][^,']+),
+
+self.get_([^\(]+)\([^\)]*\),\sself.get_([^\(]+\([^\)]*\)),
+self.get_name(RigControlAnim.\U\1\l, F\Lalse), self.get_name(\UR\Lig\UC\Lontrol\UA\Lnim.\U\1\l)
+
+RigControlAnim.get_(\w+)\(RigControlAnim.(\w+)
+RigControlAnim(RigControlAnim.\2).get_\1(
+
+, ['ik_head', 'ik_head_CTRL', 'ik', 'Head IK']
+, ['fk_neck', 'fk_neck_CTRL', 'fk', 'Neck FK']
+, ['ik_shoulder', 'ik_shoulder_CTRL', 'ik', 'Shoulder IK']
+, ['fk_spine_02', 'fk_spine_02_CTRL', 'fk', 'Spine 2 FK']
+, ['fk_spine_01', 'fk_spine_01_CTRL', 'fk', 'Spine 1 FK']
+, ['ik_hip', 'ik_hip_CTRL', 'ik', 'Hip IK']
+, ['body', 'body_CTRL', 'main', 'Body']
+, ['root', 'root_CTRL', 'main', 'Root']
+, ['offset', 'offset_CTRL', 'special', 'Offset']
+, ['character', 'character_CTRL', 'main', 'Character']
+, ['ik_shoulder_lt', 'ik_shoulder_lt_CTRL', 'ik', 'Left Shoulder IK']
+, ['ik_elbow_lt', 'ik_elbow_lt_CTRL', 'ik', 'Left Elbow IK']
+, ['ik_wrist_lt', 'ik_wrist_lt_CTRL', 'ik', 'Left Wrist IK']
+, ['ik_knee_lt', 'ik_knee_lt_CTRL', 'ik', 'Left Knee IK']
+, ['ik_foot_lt', 'ik_foot_lt_CTRL', 'ik', 'Left Foot IK']
+, ['arm_lt_gimbal', 'arm_lt_gimbal_CTRL', 'special', 'Left Upperarm FK (Gimbal Rotate)']
+, ['fk_upperarm_lt', 'fk_upperarm_lt_CTRL', 'fk', 'Left Upperarm FK']
+, ['fk_lowerarm_lt', 'fk_lowerarm_lt_CTRL', 'fk', 'Left Lowerarm FK']
+, ['fk_hand_lt', 'fk_hand_lt_CTRL', 'fk', 'Left Hand FK']
+, ['fk_thigh_lt', 'fk_thigh_lt_CTRL', 'fk', 'Left Thigh FK']
+, ['fk_calf_lt', 'fk_calf_lt_CTRL', 'fk', 'Left Calf FK']
+, ['fk_foot_lt', 'fk_foot_lt_CTRL', 'fk', 'Left Foot FK']
+, ['fk_ball_lt', 'fk_ball_lt_CTRL', 'fk', 'Left Ball FK']
+, ['fk_elbow_lowerarm_lt', 'fk_elbow_lowerarm_lt_CTRL', 'ik_fk', 'Left Elbow to Lowerarm FK']
+, ['fk_elbow_hand_lt', 'fk_elbow_hand_lt_CTRL', 'ik_fk', 'Left Elbow to Hand FK']
+, ['fk_pinky_01_lt', 'fk_pinky_01_lt_CTRL', 'fk', 'Left Pinky 1 FK']
+, ['fk_pinky_02_lt', 'fk_pinky_02_lt_CTRL', 'fk', 'Left Pinky 2 FK']
+, ['fk_pinky_03_lt', 'fk_pinky_03_lt_CTRL', 'fk', 'Left Pinky 2 FK']
+, ['fk_ring_01_lt', 'fk_ring_01_lt_CTRL', 'fk', 'Left Ring 1 FK']
+, ['fk_ring_02_lt', 'fk_ring_02_lt_CTRL', 'fk', 'Left Ring 2 FK']
+, ['fk_ring_03_lt', 'fk_ring_03_lt_CTRL', 'fk', 'Left Ring 2 FK']
+, ['fk_middle_01_lt', 'fk_middle_01_lt_CTRL', 'fk', 'Left Middle 1 FK']
+, ['fk_middle_02_lt', 'fk_middle_02_lt_CTRL', 'fk', 'Left Middle 2 FK']
+, ['fk_middle_03_lt', 'fk_middle_03_lt_CTRL', 'fk', 'Left Middle 2 FK']
+, ['fk_index_01_lt', 'fk_index_01_lt_CTRL', 'fk', 'Left Index 1 FK']
+, ['fk_index_02_lt', 'fk_index_02_lt_CTRL', 'fk', 'Left Index 2 FK']
+, ['fk_index_03_lt', 'fk_index_03_lt_CTRL', 'fk', 'Left Index 2 FK']
+, ['fk_thumb_orbit_lt', 'fk_thumb_orbit_lt_CTRL', 'special', 'Left Thumb Orbit FK']
+, ['fk_thumb_01_lt', 'fk_thumb_01_lt_CTRL', 'fk', 'Left Thumb 1 FK']
+, ['fk_thumb_02_lt', 'fk_thumb_02_lt_CTRL', 'fk', 'Left Thumb 2 FK']
+, ['hand_lt', 'hand_lt_CTRL', 'main', 'Left Hand Compound']
+, ['pinky_lt', 'pinky_lt_CTRL', 'main', 'Left Pinky Compound']
+, ['ring_lt', 'ring_lt_CTRL', 'main', 'Left Ring Compound']
+, ['middle_lt', 'middle_lt_CTRL', 'main', 'Left Middle Compound']
+, ['index_lt', 'index_lt_CTRL', 'main', 'Left Index Compound']
+, ['thumb_lt', 'thumb_lt_CTRL', 'main', 'Left Thumb Compound']
+, ['arm_lt_settings', 'arm_lt_settings', 'special', 'Left Arm Settings']
+, ['leg_lt_settings', 'leg_lt_settings', 'special', 'Left Leg Settings']
+, ['ik_shoulder_rt', 'ik_shoulder_rt_CTRL', 'ik', 'Right Shoulder IK']
+, ['ik_elbow_rt', 'ik_elbow_rt_CTRL', 'ik', 'Right Elbow IK']
+, ['ik_wrist_rt', 'ik_wrist_rt_CTRL', 'ik', 'Right Wrist IK']
+, ['ik_knee_rt', 'ik_knee_rt_CTRL', 'ik', 'Right Knee IK']
+, ['ik_foot_rt', 'ik_foot_rt_CTRL', 'ik', 'Right Foot IK']
+, ['arm_rt_gimbal', 'arm_rt_gimbal_CTRL', 'special', 'Right Upperarm FK (Gimbal Rotate)']
+, ['fk_upperarm_rt', 'fk_upperarm_rt_CTRL', 'fk', 'Right Upperarm FK']
+, ['fk_lowerarm_rt', 'fk_lowerarm_rt_CTRL', 'fk', 'Right Lowerarm FK']
+, ['fk_hand_rt', 'fk_hand_rt_CTRL', 'fk', 'Right Hand FK']
+, ['fk_thigh_rt', 'fk_thigh_rt_CTRL', 'fk', 'Right Thigh FK']
+, ['fk_calf_rt', 'fk_calf_rt_CTRL', 'fk', 'Right Calf FK']
+, ['fk_foot_rt', 'fk_foot_rt_CTRL', 'fk', 'Right Foot FK']
+, ['fk_ball_rt', 'fk_ball_rt_CTRL', 'fk', 'Right Ball FK']
+, ['fk_elbow_lowerarm_rt', 'fk_elbow_lowerarm_rt_CTRL', 'ik_fk', 'Right Elbow to Lowerarm FK']
+, ['fk_elbow_hand_rt', 'fk_elbow_hand_rt_CTRL', 'ik_fk', 'Right Elbow to Hand FK']
+, ['fk_pinky_01_rt', 'fk_pinky_01_rt_CTRL', 'fk', 'Right Pinky 1 FK']
+, ['fk_pinky_02_rt', 'fk_pinky_02_rt_CTRL', 'fk', 'Right Pinky 2 FK']
+, ['fk_pinky_03_rt', 'fk_pinky_03_rt_CTRL', 'fk', 'Right Pinky 2 FK']
+, ['fk_ring_01_rt', 'fk_ring_01_rt_CTRL', 'fk', 'Right Ring 1 FK']
+, ['fk_ring_02_rt', 'fk_ring_02_rt_CTRL', 'fk', 'Right Ring 2 FK']
+, ['fk_ring_03_rt', 'fk_ring_03_rt_CTRL', 'fk', 'Right Ring 2 FK']
+, ['fk_middle_01_rt', 'fk_middle_01_rt_CTRL', 'fk', 'Right Middle 1 FK']
+, ['fk_middle_02_rt', 'fk_middle_02_rt_CTRL', 'fk', 'Right Middle 2 FK']
+, ['fk_middle_03_rt', 'fk_middle_03_rt_CTRL', 'fk', 'Right Middle 2 FK']
+, ['fk_index_01_rt', 'fk_index_01_rt_CTRL', 'fk', 'Right Index 1 FK']
+, ['fk_index_02_rt', 'fk_index_02_rt_CTRL', 'fk', 'Right Index 2 FK']
+, ['fk_index_03_rt', 'fk_index_03_rt_CTRL', 'fk', 'Right Index 2 FK']
+, ['fk_thumb_orbit_rt', 'fk_thumb_orbit_rt_CTRL', 'special', 'Right Thumb Orbit FK']
+, ['fk_thumb_01_rt', 'fk_thumb_01_rt_CTRL', 'fk', 'Right Thumb 1 FK']
+, ['fk_thumb_02_rt', 'fk_thumb_02_rt_CTRL', 'fk', 'Right Thumb 2 FK']
+, ['hand_rt', 'hand_rt_CTRL', 'main', 'Right Hand Compound']
+, ['pinky_rt', 'pinky_rt_CTRL', 'main', 'Right Pinky Compound']
+, ['ring_rt', 'ring_rt_CTRL', 'main', 'Right Ring Compound']
+, ['middle_rt', 'middle_rt_CTRL', 'main', 'Right Middle Compound']
+, ['index_rt', 'index_rt_CTRL', 'main', 'Right Index Compound']
+, ['thumb_rt', 'thumb_rt_CTRL', 'main', 'Right Thumb Compound']
+, ['arm_rt_settings', 'arm_rt_settings', 'special', 'Right Arm Settings']
+, ['leg_rt_settings', 'leg_rt_settings', 'special', 'Right Leg Settings']
+
+
+def print_location(parent_node, child_node):
+	parent_trans = cmds.xform(parent_node, query=True, worldSpace=True, translation=True)
+	child_trans = cmds.xform(child_node, query=True, worldSpace=True, translation=True)
+
+	x = round((child_trans[0] = parent_trans[0]), 2))
+	y = round((child_trans[1] = parent_trans[1]), 2))
+	z = round((child_trans[2] = parent_trans[2]), 2))
+
+	print ('{0}\t{1}\t{2}\t{3}'.format(child_node, x, y, z))
+
+parent_node = 'root'
+
+child_node = None
+child_nodes = None
+queued_parent_child_nodes = []
+
+if cmds.objExists(parent_node):
+	child_nodes = cmds.listRelatives(parent_node)
+
+while child_nodes is not None or len(queued_parent_child_nodes) > 0:
+	if child_nodes is not None and len(child_nodes) > 0:
+		child_node = child_nodes[0]
+
+		for node in child_nodes[1:]:
+			# Add rest of child to list
+			queued_parent_child_nodes.append('{0}:{1}'.format(parent_node, node))
+	elif len(queued_parent_child_nodes) > 0:
+		print('\n')
+		parent_node = queued_parent_child_nodes[0].rpartition(':')[0]
+		child_node = queued_parent_child_nodes[0].rpartition(':')[2]
+
+		# Remove first item from list
+		queued_parent_child_nodes = queued_parent_child_nodes[1:]
+	else:
+		break
+
+	print_location(parent_node, child_node)
+
+	parent_node = child_node
+	child_nodes = cmds.listRelatives(parent_node)
+
+
+
+--------------------------------
+
+cmds.xform('lowerarm_lt', query=True, worldSpace=True, translation=True)
+
+origin = [0, 0, 0]
+a = [5, 5, 5]
+b = [0, 0, 5]
+origin_to_a = [a[0] - origin[0], a[1] - origin[1], a[2] - origin[2]]
+origin_to_b = [b[0] - origin[0], b[1] - origin[1], b[2] - origin[2]]
+origin
+a
+b
+origin_to_a
+origin_to_b
+cmds.angleBetween(vector1=origin_to_a, vector2=origin_to_b)
+
+
+-------------------
+
+Tito Nilo +P500 1 month another +P500 after 2 months
+Pinapapasok ni Ma'am sa Sunday para extra income
+mabait naman sina sir at ma'am
+madiskarte sya
+paghele ng malakas
+2500 napunta kay tito nilo, bakit 500 lang sa kanya
+4k pagaalaga sa probinsya nya
+cellphone
+
+
+
+-----
+
+handle error:
+	[INFO ] Rigathon.FbxExportUI | # FBX Export started [Time Unit: film, RotationInterp: 3]
+	[INFO ] Rigathon.FbxExportUI | # Export path: C:\$_Chyros\GameDev\Workspace\Python\rigathon\project\export\Lhilium\Lhilium_InitialPose_1_2.fbx
+	[INFO ] Rigathon.FbxExportUI | 	- Baking animation...
+	[INFO ] Rigathon.FbxExportUI | 	- Running Euler filter...
+	// Error: line 1: Cannot find procedure "FBXExportConstraints". // 
+	# Error: Error occurred during execution of MEL script
+	# line 1: line 1: Cannot find procedure "FBXExportConstraints".
+	# Traceback (most recent call last):
+	#   File "C:\$_Chyros\GameDev\Workspace\Python\rigathon\script\cnx_rigathon_fbx_export_ui.py", line 362, in fbx_export
+	#     export_path = self.export_anim(base_export_path, export_layer, anim_sequence, min_frame, max_frame)
+	#   File "C:\$_Chyros\GameDev\Workspace\Python\rigathon\script\cnx_rigathon_fbx_export_ui.py", line 445, in export_anim
+	#     mel.eval('FBXExportConstraints -v 1;')
+	# RuntimeError: Error occurred during execution of MEL script
+	# line 1: line 1: Cannot find procedure "FBXExportConstraints". # 
+	file -f -options "v=0;"  -typ "mayaBinary" -o "C:/$_Chyros/GameDev/Workspace/Python/rigathon/sword_rig.mb";addRecentFile("C:/$_Chyros/GameDev/Workspace/Python/rigathon/sword_rig.mb", "mayaBinary");
+	requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass" -nodeType "mentalrayUserBuffer" -nodeType "mentalraySubdivApprox" -nodeType "mentalrayCurveApprox" -nodeType "mentalraySurfaceApprox" -nodeType "mentalrayDisplaceApprox" -nodeType "mentalrayOptions" -nodeType "mentalrayGlobals" -nodeType "mentalrayItemsList" -nodeType "mentalrayShader" -nodeType "mentalrayUserData" -nodeType "mentalrayText" -nodeType "mentalrayTessellation" -nodeType "mentalrayPhenomenon" -nodeType "mentalrayLightProfile" -nodeType "mentalrayVertexColors" -nodeType "mentalrayIblShape" -nodeType "mapVizShape" -nodeType "mentalrayCCMeshProxy" -nodeType "cylindricalLightLocator" -nodeType "discLightLocator" -nodeType "rectangularLightLocator" -nodeType "sphericalLightLocator" -nodeType "abcimport" -nodeType "mia_physicalsun" -nodeType "mia_physicalsky" -nodeType "mia_material" -nodeType "mia_material_x" -nodeType "mia_roundcorners" -nodeType "mia_exposure_simple" -nodeType "mia_portal_light" -nodeType "mia_light_surface" -nodeType "mia_exposure_photographic" -nodeType "mia_exposure_photographic_rev" -nodeType "mia_lens_bokeh" -nodeType "mia_envblur" -nodeType "mia_ciesky" -nodeType "mia_photometric_light" -nodeType "mib_texture_vector" -nodeType "mib_texture_remap" -nodeType "mib_texture_rotate" -nodeType "mib_bump_basis" -nodeType "mib_bump_map" -nodeType "mib_passthrough_bump_map" -nodeType "mib_bump_map2" -nodeType "mib_lookup_spherical" -nodeType "mib_lookup_cube1" -nodeType "mib_lookup_cube6" -nodeType "mib_lookup_background" -nodeType "mib_lookup_cylindrical" -nodeType "mib_texture_lookup" -nodeType "mib_texture_lookup2" -nodeType "mib_texture_filter_lookup" -nodeType "mib_texture_checkerboard" -nodeType "mib_texture_polkadot" -nodeType "mib_texture_polkasphere" -nodeType "mib_texture_turbulence" -nodeType "mib_texture_wave" -nodeType "mib_reflect" -nodeType "mib_refract" -nodeType "mib_transparency" -nodeType "mib_continue" -nodeType "mib_opacity" -nodeType "mib_twosided" -nodeType "mib_refraction_index" -nodeType "mib_dielectric" -nodeType "mib_ray_marcher" -nodeType "mib_illum_lambert" -nodeType "mib_illum_phong" -nodeType "mib_illum_ward" -nodeType "mib_illum_ward_deriv" -nodeType "mib_illum_blinn" -nodeType "mib_illum_cooktorr" -nodeType "mib_illum_hair" -nodeType "mib_volume" -nodeType "mib_color_alpha" -nodeType "mib_color_average" -nodeType "mib_color_intensity" -nodeType "mib_color_interpolate" -nodeType "mib_color_mix" -nodeType "mib_color_spread" -nodeType "mib_geo_cube" -nodeType "mib_geo_torus" -nodeType "mib_geo_sphere" -nodeType "mib_geo_cone" -nodeType "mib_geo_cylinder" -nodeType "mib_geo_square" -nodeType "mib_geo_instance" -nodeType "mib_geo_instance_mlist" -nodeType "mib_geo_add_uv_texsurf" -nodeType "mib_photon_basic" -nodeType "mib_light_infinite" -nodeType "mib_light_point" -nodeType "mib_light_spot" -nodeType "mib_light_photometric" -nodeType "mib_cie_d" -nodeType "mib_blackbody" -nodeType "mib_shadow_transparency" -nodeType "mib_lens_stencil" -nodeType "mib_lens_clamp" -nodeType "mib_lightmap_write" -nodeType "mib_lightmap_sample" -nodeType "mib_amb_occlusion" -nodeType "mib_fast_occlusion" -nodeType "mib_map_get_scalar" -nodeType "mib_map_get_integer" -nodeType "mib_map_get_vector" -nodeType "mib_map_get_color" -nodeType "mib_map_get_transform" -nodeType "mib_map_get_scalar_array" -nodeType "mib_map_get_integer_array" -nodeType "mib_fg_occlusion" -nodeType "mib_bent_normal_env" -nodeType "mib_glossy_reflection" -nodeType "mib_glossy_refraction" -nodeType "builtin_bsdf_architectural" -nodeType "builtin_bsdf_architectural_comp" -nodeType "builtin_bsdf_carpaint" -nodeType "builtin_bsdf_ashikhmin" -nodeType "builtin_bsdf_lambert" -nodeType "builtin_bsdf_mirror" -nodeType "builtin_bsdf_phong" -nodeType "contour_store_function" -nodeType "contour_store_function_simple" -nodeType "contour_contrast_function_levels" -nodeType "contour_contrast_function_simple" -nodeType "contour_shader_simple" -nodeType "contour_shader_silhouette" -nodeType "contour_shader_maxcolor" -nodeType "contour_shader_curvature" -nodeType "contour_shader_factorcolor" -nodeType "contour_shader_depthfade" -nodeType "contour_shader_framefade" -nodeType "contour_shader_layerthinner" -nodeType "contour_shader_widthfromcolor" -nodeType "contour_shader_widthfromlightdir" -nodeType "contour_shader_widthfromlight" -nodeType "contour_shader_combi" -nodeType "contour_only" -nodeType "contour_composite" -nodeType "contour_ps" -nodeType "mi_metallic_paint" -nodeType "mi_metallic_paint_x" -nodeType "mi_bump_flakes" -nodeType "mi_car_paint_phen" -nodeType "mi_metallic_paint_output_mixer" -nodeType "mi_car_paint_phen_x" -nodeType "physical_lens_dof" -nodeType "physical_light" -nodeType "dgs_material" -nodeType "dgs_material_photon" -nodeType "dielectric_material" -nodeType "dielectric_material_photon" -nodeType "oversampling_lens" -nodeType "path_material" -nodeType "parti_volume" -nodeType "parti_volume_photon" -nodeType "transmat" -nodeType "transmat_photon" -nodeType "mip_rayswitch" -nodeType "mip_rayswitch_advanced" -nodeType "mip_rayswitch_environment" -nodeType "mip_card_opacity" -nodeType "mip_motionblur" -nodeType "mip_motion_vector" -nodeType "mip_matteshadow" -nodeType "mip_cameramap" -nodeType "mip_mirrorball" -nodeType "mip_grayball" -nodeType "mip_gamma_gain" -nodeType "mip_render_subset" -nodeType "mip_matteshadow_mtl" -nodeType "mip_binaryproxy" -nodeType "mip_rayswitch_stage" -nodeType "mip_fgshooter" -nodeType "mib_ptex_lookup" -nodeType "misss_physical" -nodeType "misss_physical_phen" -nodeType "misss_fast_shader" -nodeType "misss_fast_shader_x" -nodeType "misss_fast_shader2" -nodeType "misss_fast_shader2_x" -nodeType "misss_skin_specular" -nodeType "misss_lightmap_write" -nodeType "misss_lambert_gamma" -nodeType "misss_call_shader" -nodeType "misss_set_normal" -nodeType "misss_fast_lmap_maya" -nodeType "misss_fast_simple_maya" -nodeType "misss_fast_skin_maya" -nodeType "misss_fast_skin_phen" -nodeType "misss_fast_skin_phen_d" -nodeType "misss_mia_skin2_phen" -nodeType "misss_mia_skin2_phen_d" -nodeType "misss_lightmap_phen" -nodeType "misss_mia_skin2_surface_phen" -nodeType "surfaceSampler" -nodeType "mib_data_bool" -nodeType "mib_data_int" -nodeType "mib_data_scalar" -nodeType "mib_data_vector" -nodeType "mib_data_color" -nodeType "mib_data_string" -nodeType "mib_data_texture" -nodeType "mib_data_shader" -nodeType "mib_data_bool_array" -nodeType "mib_data_int_array" -nodeType "mib_data_scalar_array" -nodeType "mib_data_vector_array" -nodeType "mib_data_color_array" -nodeType "mib_data_string_array" -nodeType "mib_data_texture_array" -nodeType "mib_data_shader_array" -nodeType "mib_data_get_bool" -nodeType "mib_data_get_int" -nodeType "mib_data_get_scalar" -nodeType "mib_data_get_vector" -nodeType "mib_data_get_color" -nodeType "mib_data_get_string" -nodeType "mib_data_get_texture" -nodeType "mib_data_get_shader" -nodeType "mib_data_get_shader_bool" -nodeType "mib_data_get_shader_int" -nodeType "mib_data_get_shader_scalar" -nodeType "mib_data_get_shader_vector" -nodeType "mib_data_get_shader_color" -nodeType "user_ibl_env" -nodeType "user_ibl_rect" -nodeType "mia_material_x_passes" -nodeType "mi_metallic_paint_x_passes" -nodeType "mi_car_paint_phen_x_passes" -nodeType "misss_fast_shader_x_passes" -dataType "byteArray" "Mayatomr" "2014.0 - 3.11.1.13 ";
+	// File read in 0 seconds. // 
+
+- select visible controls
+
+---------------------------------------------------------
+
+What feels good?
+- Opening gate that is "Can only be opened from the other side"
+- Looting a treasure or corpse. It should feel nice!(Sound? Pics?)
+
+
+-------------------------------------------------------
+
+I like:
+	Vilohg
+	Vilohg with traps?
+	Vilohg with bomber bombs?
+	Vilohg as cute humans?
+	Card game mechanics?
+	Metal Gear Solid-like (Vision)
+	
+	Skills:
+		Ice
+		Fire
+		Scorpion's spear
+
+	Survival?
+
+
+Game Concepts
+	Vilohg 2
+		Skill costs stamina
+		2-player local game
+		Fire skill burns opponent which depletes HP overtime
+		Ice skill freezes opponent which slightly depletes HP overtime and stuns for 1 sec
+		Spear for get-over-here mechanics
+		Slam attack which bounces player body and causes shockwave to knockback opponent
+		Bomberman bomb-style
+		Traps spawns such as:
+			Gate trap - block movement
+		Leaderboards and scoring system
+	Survival
+		Hunger games-style
+		Multiplayer game
+		Game modes such as:
+			All out war
+			Kill or be killed (Players can change diplomacy against each other anytime (Neutral -> Friendly -> Hostile)
+			Single / Co-op in horde mode
+		Players depletes HP overtime to prevent camping
+		Player can pick up food for HP gain
+		Player can pick up a weapon to use
+		On near death hunger, player can destroy another player to replenish HP
+		Player can see how many food the other player has the more he is hungry
+		Metal Gear Solid-like vision (fog of war)
+		Torchlight for increased vision in the dark
+		Traps can be picked up or triggered
+		Traps will only be visible when walking slowly or standing still
+		On death, player becomes spectre:
+			Spectre can lay traps from another play
+			Spectre can slow a player
+			Spectre can help a player:
+				As an armor to increase defense of a chosen player
+			Spectre can possess a horde which strats will be increased and indicator that players can see that an enemy NPC has been possessed (outline color on mesh)
+			Spectre can teleport and manipulate the level
+		On death V2, can be ressurected as an anemy
+		Leaderboards and scoring system
+		Player Color:
+			Red = Hostile
+			Yellow / Gray = Neutral
+			Green / Blue = Friend
+		Player body parts detached on death
+		Ranged Bullet Time as a skill - does not affect everyone
+	Survival PVE/PVP
+		Same as above except players are neutral to each other at start
+		Player can attack another player which makes you evil
+		Player can provide or ask items from another player
+		Player can still an item from another player:
+			Inventory now shows with STOP icon and says "Stolen by player X"
+		Has horde mode
+		A player can become hard-to-kill "zombie" which everyone wants to destroy
+	Get me out of here!
+		Single-player game
+		Player starts in a dungeon
+		Player chooses a door from 3
+		Wrong door costs 1 limb
+		If player loses a leg, he crawls slow
+		If player loses an arm he walks slower while other hand holding the other shoulder that lost its arm
+		3 lives, 7 decisions
+		Door has clues, probably riddles
+		Hunger as time limit as anti-google search
+	Torchlight 2-inspired
+		Stats! (Strength, Perception, Agility, Intelligence, Charm, Luck)
+		RPG Weapons (Long Sword +1) Min. Dmg., Max Dmg
+		RPG Armors (Cheat Armor +2) Defense: 30, etc...
+		Inventory
+		Pick Ups
+		Random Map
+		Random Enemies
+		Level up system
+		Torch system
+		Day/Night cycle
+		
+		RPG
+	Escape
+		Dungeon
+		Dark
+		Torch
+		Enemies
+		Level up?
+		Randomized "Maze" Level
+		Keys
+		Locked Doors
+		Swords
+		Traps
+		Sticks
+		Weapon (knife, stick)
+		
+		
+
+===============================
+
+7:30 start
+
+300 card ni tita (incl starbucks worth 180)
+350 tita
+101 7-11 (2 gatorade, 1 coke)
+555 medicines (30 natalac, sangobion, 8 imodium)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=========================================
+
+Escape
+
+Level Design
+	- Dungeon
+	- Castle with underground
+	- Procedural Generated
+	- Randomized
+	- Theme: Dark Cave
+	- Torch required
+	- Enemies' eyes can only be seen from afar
+Music
+	- We need one! For inspiration in game development!
+	- Ronald Jenkees
+Traps!!!
+	- Flame traps
+	- just need to be creative and imaginative
+Character
+Inspiration for Game Development
+	- Music
+		- Ronald Jenkees!
+	- Learning
+		- Just keep on learning
+	- Prototype
+		- Create a prototype!
+		- Just do it mentality!
+
+
+Dark Souls 2 To Do
+- Dodge Ring
+- Heirs of the Sun 30 medals (-5)
+- Dark Red Aura
+- 

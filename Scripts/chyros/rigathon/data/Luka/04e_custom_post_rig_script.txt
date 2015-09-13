@@ -1,0 +1,19 @@
+
+################################################################################
+#### [ SETUP ] Default Parameters
+################################################################################
+
+define_defaults	# DEFINE DEFAULT PARAMETERS
+		[EDIT_LAYER]
+			noRecurse=True
+;
+
+
+################################################################################
+#### [ CUSTOM POST SCRIPT ] Export Layer
+################################################################################
+
+# Add members to layer: FBX_EXPORT
+	edit_layer		FBX_Export		[body_GEO, hair_GEO, custom_GEO]
+	;
+
