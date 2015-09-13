@@ -80,6 +80,12 @@ Intellisense
     Show Parameters         Ctrl+P
     Code Completion         Ctrl+Space
 
+Collapse/Expand
+    Collapse                Alt+Shift+Numpad -
+    Expand                  Alt+Shift+Numpad +
+    Collapse All            Ctrl+Shift+Numpad -
+    Expand All              Ctrl+Shift+Numpad +
+
 Close Editor Window
     Close Active            Alt+C
     Close Others            Alt+Shift+C

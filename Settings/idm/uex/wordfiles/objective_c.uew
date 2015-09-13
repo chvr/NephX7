@@ -1,0 +1,79 @@
+/L17"Objective-C/C++" C_LANG Line Comment = // Block Comment On = /* Block Comment Off = */ Escape Char = \ String Chars = "' File Extensions = MM M
+/Delimiters = ~!@%^&*()-+=|\/{}[]:;"'<> ,	.?
+/Function String = "%[ ^t]++[ps][a-z]+ [a-z0-9]+ ^(*(*)^)*{$"
+/Function String 1 = "%[ ^t]++[ps][a-z]+ [a-z0-9]+ ^(*(*)^)[ ^t]++$"
+/Function String 2 = "%[ ^t]++[+-][ ^t]++([a-z]+[a-z0-9]++)[a-z]+[a-z0-9]++*$"
+/Indent Strings = "{" ":"
+/Unindent Strings = "}"
+/Open Brace Strings =  "{" "(" "["
+/Close Brace Strings = "}" ")" "]"
+/Open Fold Strings = "{"
+/Close Fold Strings = "}"
+/C1"Keywords"
+auto
+break bool
+case char const continue
+default do double defined
+else enum extern
+float for
+goto
+if int
+long
+nil
+register return
+self super short signed sizeof static struct switch
+typedef
+union unsigned
+void volatile
+while
+SEL
+@class @interface @protocol @implementation @end @selector @private @protected @public @encode @try @throw @catch @finally @synchronized @property @synthesize @dynamic
+_cmd __asm __based __cdecl __declspec __except __far __fastcall __finally __fortran __huge __inline __int16 __int32 __int64 __int8 __interrupt __leave __loadds __near __pascal __saveregs __segment __segname __self __stdcall __try __uuidof
+#import #define #error #include #include_next #elif #if #line #else #ifdef #pragma #endif #ifndef #undef
+/C2"C++ Keywords"
+catch class const_cast
+delete dynamic_cast
+explicit export
+false friend
+inline
+mutable
+new namespace
+operator
+private protected public
+reinterpret_cast
+static_cast
+template this throw true try typeid typename
+using
+virtual
+wchar_t
+__multiple_inheritance __single_inheritance __virtual_inheritance
+/C3"C extensions"
+dllexport dllimport
+naked
+thread
+uuid
+/C4"Operators"
++
+-
+=
+// /
+*
+~
+%
+&
+>
+<
+^
+!
+|
+/C5"Messages"
+alloc
+init
+retain
+release
+autorelease
+/C6"Types"
+id
+IBAction IBOutlet
+NSObject NSString
+NSObject NSString NSMutableString NSArray NSMutableArray NSDictionary NSMutableDictionary

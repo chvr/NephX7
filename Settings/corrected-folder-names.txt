@@ -1,0 +1,3 @@
+config -> .config
+PyCharm40 -> .PyCharm40
+IntelliJIdea14 -> .IntelliJIdea14

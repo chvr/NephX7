@@ -1,0 +1,58 @@
+Wed Sep  2 15:28:58 2015:uex.cpp:169: Application startup.
+Wed Sep  2 15:28:58 2015:uex.cpp:997: Initializing application...
+Wed Sep  2 15:28:58 2015:uex.cpp:1018: Create process lock file: /tmp/4FB1C19C-1DC6-4550-8535-61B38FE55A24-UEX-arifal.lock
+Wed Sep  2 15:28:58 2015:uex.cpp:1024: Begin wxApp initialization...
+Wed Sep  2 15:28:58 2015:uex.cpp:1030: wxApp initialization succeeded
+Wed Sep  2 15:28:58 2015:uex.cpp:1032: Initializing base application.
+Wed Sep  2 15:28:58 2015:uex.cpp:231: ueConfig initialization.
+Wed Sep  2 15:28:58 2015:ueConfig.h:25: Setting up configuration paths.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:358: Checking if default configuration path exists: /home/arifal/.idm/uex
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:395: Using configuration file: /home/arifal/.idm/uex/uex.conf
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:407: Checking for UEXROOT environment variable.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:411: UEXROOT environment variable does not exist.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:446: Searching for application executable path.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:479: Using bin directory: /usr/bin
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:511: Using share directory: /usr/share/uex
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:530: Checking if common configuration path exists: /home/arifal/.idm/common
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:56: Using config file: /home/arifal/.idm/uex/uex.conf
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:57: Checking if config file exists.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:91: Using volatile config file: /home/arifal/.idm/uex/uex.conf
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:92: Checking if volatile config file exists.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:121: Loading all settings from configuration file.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:239: Creating session id.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:246: Session id: 8221CCD6-6249-462B-8668-0D0DC3E7074824969arifal
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:291: Using temp directory: /tmp/8221CCD6-6249-462B-8668-0D0DC3E7074824969arifal
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:292: Creating temp directory.
+Wed Sep  2 15:28:58 2015:ueConfig.cpp:295: Temp directory created successfully.
+Wed Sep  2 15:28:58 2015:uex.cpp:269: Load configuration settings.
+Wed Sep  2 15:28:58 2015:uex.cpp:517: Loading keymapping table.
+Wed Sep  2 15:28:59 2015:uex.cpp:1035: Initializing language resources.
+Wed Sep  2 15:28:59 2015:uex.cpp:315: Detect available language files.
+Wed Sep  2 15:28:59 2015:uex.cpp:320: System language: en_US
+Wed Sep  2 15:28:59 2015:uex.cpp:1038: Initializing IPC communication layer.
+Wed Sep  2 15:28:59 2015:uex.cpp:1047: Initializing platform specific features.
+Wed Sep  2 15:28:59 2015:uex.cpp:1051: Initializing network manager.
+Wed Sep  2 15:28:59 2015:uex.cpp:1054: Net Init Time: 0.21
+Wed Sep  2 15:28:59 2015:uex.cpp:1057: Creating document manager.
+Wed Sep  2 15:28:59 2015:uex.cpp:1060: Initializing image handlers.
+Wed Sep  2 15:28:59 2015:uex.cpp:1064: Initializing file system handlers.
+Wed Sep  2 15:28:59 2015:uex.cpp:814: Initializing license management system.
+Wed Sep  2 15:28:59 2015:uex.cpp:815: Check license log for details: /home/arifal/.idm/uex/logs/license.log
+Wed Sep  2 15:28:59 2015:uex.cpp:979: Creating license management instance.
+Wed Sep  2 07:29:06 2015:uex.cpp:986: License management layer created and initialized.
+Wed Sep  2 15:29:06 2015:uex.cpp:987: SoftwareKey Time: 6.79
+Wed Sep  2 15:29:06 2015:uex.cpp:1252: Creating main application window.
+Wed Sep  2 15:29:06 2015:uex.cpp:2032: Create document template.
+Wed Sep  2 15:29:06 2015:uex.cpp:2042: Create main window instance.
+Wed Sep  2 15:29:08 2015:uex.cpp:2049: Restore main window.
+Wed Sep  2 15:29:08 2015:uex.cpp:2050: X: 1920, Y: 30, W: 1244, H: 997
+Wed Sep  2 15:29:08 2015:uex.cpp:2076: Restoring main window maximized state.
+Wed Sep  2 15:29:08 2015:uex.cpp:2080: Loading recent file list.
+Wed Sep  2 15:29:08 2015:uex.cpp:2083: Showing main window.
+Wed Sep  2 07:29:08 2015:uex.cpp:1270: Creating in-product messaging dialog.
+Wed Sep  2 15:29:08 2015:uex.cpp:1272: Displaying in-product messaging dialog.
+Wed Sep  2 07:29:10 2015:uex.cpp:1301: Opening files from the command line.
+Wed Sep  2 15:29:10 2015:uex.cpp:1367: Reloading previously open project.
+Wed Sep  2 15:29:10 2015:uex.cpp:1377: Reloading previously open files.
+Wed Sep  2 15:29:10 2015:uex.cpp:1404: Creating empty document on startup.
+Wed Sep  2 15:29:10 2015:uex.cpp:1444: Application initialization complete.
