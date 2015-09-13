@@ -1,0 +1,104 @@
+#============================================================================
+# Copy jenkins' DB scripts to local
+#     (purge_database, install_baseline, install_update)
+#============================================================================
+ssh jenkins.mano.dev.kambi.com
+mkdir /home/arifal/jenkins-scripts
+cp -r /home/jenkins/script/* /home/arifal/jenkins-scripts/
+exit
+
+mkdir /home/arifal/jenkins-scripts
+cd /home/arifal/jenkins-scripts
+scp jenkins.mano.dev.kambi.com:/home/arifal/jenkins-scripts/* .
+sudo chmod a+x *
+
+#============================================================================
+# DB pre-requisites for FS, NLS, and RT
+#============================================================================
+# Create tablespaces (prerequisite
+sudo mkdir -P /opt/db/fs-data
+sudo mkdir /opt/db/nls-data
+sudo mkdir /opt/db/rt-data
+sudo chown -R postgres:postgres /opt/db
+
+#============================================================================
+# Postgres commands for creating DB for FS, NLS, and RT
+#============================================================================ 
+# (make sure postgres is already installed to your local)
+
+# Open postgres
+sudo su - postgres
+psql
+
+# Create USER ROLES for FS, NLS, and RT
+CREATE ROLE feeds_solution_admin_localhost LOGIN ENCRYPTED PASSWORD 'feeds_solution_admin_localhost';
+CREATE ROLE feeds_solution_app_localhost LOGIN ENCRYPTED PASSWORD 'feeds_solution_app_localhost';
+
+CREATE ROLE nls_admin_localhost LOGIN ENCRYPTED PASSWORD 'nls_admin_localhost';
+CREATE ROLE nls_app_localhost LOGIN ENCRYPTED PASSWORD 'nls_app_localhost';
+
+CREATE ROLE result_tool_admin_localhost LOGIN ENCRYPTED PASSWORD 'result_tool_admin_localhost';
+CREATE ROLE result_tool_app_localhost LOGIN ENCRYPTED PASSWORD 'result_tool_app_localhost';
+
+# Create TABLESPACES for FS, NLS, and RT
+CREATE TABLESPACE fs_data_ts LOCATION '/opt/db/fs-data';
+REVOKE ALL ON TABLESPACE fs_data_ts FROM public;
+GRANT CREATE ON TABLESPACE fs_data_ts TO GROUP feeds_solution_admin_localhost WITH GRANT OPTION;
+GRANT CREATE ON TABLESPACE fs_data_ts TO GROUP feeds_solution_app_localhost WITH GRANT OPTION;
+
+CREATE TABLESPACE nls_data_ts LOCATION '/opt/db/nls-data';
+REVOKE ALL ON TABLESPACE nls_data_ts FROM public;
+GRANT CREATE ON TABLESPACE nls_data_ts TO GROUP nls_admin_localhost WITH GRANT OPTION;
+GRANT CREATE ON TABLESPACE nls_data_ts TO GROUP nls_app_localhost WITH GRANT OPTION;
+
+CREATE TABLESPACE rt_data_ts LOCATION '/opt/db/rt-data';
+REVOKE ALL ON TABLESPACE rt_data_ts FROM public;
+GRANT CREATE ON TABLESPACE rt_data_ts TO GROUP result_tool_admin_localhost WITH GRANT OPTION;
+GRANT CREATE ON TABLESPACE rt_data_ts TO GROUP result_tool_app_localhost WITH GRANT OPTION;
+
+# Create DATABASES for FS, NLS, and RT
+CREATE DATABASE feeds_solution_localhost OWNER=feeds_solution_admin_localhost TABLESPACE=fs_data_ts;
+REVOKE ALL ON DATABASE feeds_solution_localhost FROM public;
+GRANT ALL ON DATABASE feeds_solution_localhost TO GROUP feeds_solution_admin_localhost WITH GRANT OPTION;
+GRANT CONNECT ON DATABASE feeds_solution_localhost TO GROUP feeds_solution_admin_localhost;
+GRANT ALL ON DATABASE feeds_solution_localhost TO GROUP feeds_solution_app_localhost WITH GRANT OPTION;
+GRANT CONNECT ON DATABASE feeds_solution_localhost TO GROUP feeds_solution_app_localhost;
+
+CREATE DATABASE nls_localhost OWNER=nls_admin_localhost TABLESPACE=nls_data_ts;
+REVOKE ALL ON DATABASE nls_localhost FROM public;
+GRANT ALL ON DATABASE nls_localhost TO GROUP nls_admin_localhost WITH GRANT OPTION;
+GRANT CONNECT ON DATABASE nls_localhost TO GROUP nls_admin_localhost;
+GRANT ALL ON DATABASE nls_localhost TO GROUP nls_app_localhost WITH GRANT OPTION;
+GRANT CONNECT ON DATABASE nls_localhost TO GROUP nls_app_localhost;
+
+CREATE DATABASE result_tool_localhost OWNER=result_tool_admin_localhost TABLESPACE=rt_data_ts;
+REVOKE ALL ON DATABASE result_tool_localhost FROM public;
+GRANT ALL ON DATABASE result_tool_localhost TO GROUP result_tool_admin_localhost WITH GRANT OPTION;
+GRANT CONNECT ON DATABASE result_tool_localhost TO GROUP result_tool_admin_localhost;
+GRANT ALL ON DATABASE result_tool_localhost TO GROUP result_tool_app_localhost WITH GRANT OPTION;
+GRANT CONNECT ON DATABASE result_tool_localhost TO GROUP result_tool_app_localhost;
+
+# Quit from postgres
+\q
+
+#============================================================================ 
+# Executing jenkins' DB scripts
+#     (purge_database, install_baseline, install_update)
+#============================================================================ 
+
+# (for each project's db/config directory, create a localhost.conf based from test09.conf)
+
+cd /home/arifal/svn/feeds-solution/trunk/db
+/home/arifal/Work/jenkins-scripts/purge_database -f -c config/localhost.conf
+/home/arifal/Work/jenkins-scripts/install_baseline -f -c config/localhost.conf
+/home/arifal/Work/jenkins-scripts/install_update -f -c config/localhost.conf
+
+cd /home/arifal/svn/nls/trunk/db
+/home/arifal/Work/jenkins-scripts/purge_database -f -c config/localhost.conf
+/home/arifal/Work/jenkins-scripts/install_baseline -f -c config/localhost.conf
+/home/arifal/Work/jenkins-scripts/install_update -f -c config/localhost.conf
+
+cd /home/arifal/svn/result-tool/trunk/db
+/home/arifal/Work/jenkins-scripts/purge_database -f -c config/localhost.conf
+/home/arifal/Work/jenkins-scripts/install_baseline -f -c config/localhost.conf
+/home/arifal/Work/jenkins-scripts/install_update -f -c config/localhost.conf

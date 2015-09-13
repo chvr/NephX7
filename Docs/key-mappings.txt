@@ -1,0 +1,123 @@
+------------
+Key Mappings
+------------
+
+Settings                    Alt+F7
+
+Font Size
+    Increase                Ctrl+Numpad +
+                            Ctrl+Equals
+    Decrease                Ctrl+Numpad -
+                            Ctrl+Minus
+    Reset                   Ctrl+0
+
+Clone Caret
+    Above                   Alt+Shift+Up
+    Below                   Alt+Shift+Down
+    Add / Remove            Alt+Button1 Click
+                            Alt+Shift+Button1 Click
+    Undo                    Alt+Shift+Z
+
+Delete/Duplicate Line
+    Delete Line             Ctrl+D
+    Duplicate Line          Ctrl+Shift+D
+
+Move Line
+    Up                      Alt+Up
+    Down                    Alt+Down
+
+Find
+    Quick                   Ctrl+F
+    Find Dialog Box         Ctrl+Shift+F
+
+Find Next/Previous Occurrence
+    Next                    Ctrl+K
+                            F3
+    Previous                Ctrl+Shift+K
+                            Shift+F3
+
+Find Next/Previous Error/Marker
+    Next                    Ctrl+;
+    Previous                Ctrl+Shift+;
+
+Find Next/Previous VCS Change/Diff
+    Next Difference         Ctrl+L
+    Previous Difference     Ctrl+Shift+L
+    Next Change             Ctrl+L
+    Previous Change         Ctrl+Shift+L
+
+Editor Navigation
+    Next Tab                Alt+X
+    Previous Tab            Alt+Z
+    Next Method             Ctrl+Alt+Up
+    Previous Method         Ctrl+Alt+Down
+    Next Parameter          Tab
+    Previous Parameter      Shift+Tab
+
+Next/Previous Word in Camel/Humps Mode
+    Next                    Ctrl+Alt+Right
+                            Alt+Shift+Right
+    Previous                Ctlr+Alt+Left
+                            Alt+Shift+Left
+
+Code Navigation
+    Go to Declaration       Alt+G
+    Find Usages             Alt+Shift+F
+    Call Hierarchy          Ctrl+Shift+H
+                            Alt+Shift+H
+    Symbol...               Alt+Shift+G
+    File...                 Alt+Shift+O
+    Class Name...           Alt+Shift+N
+    -> Next                 Alt+Right
+    <- Back                 Alt+Left
+
+Undo/Redo
+    Undo                    Ctrl+Z
+    Redo                    Ctrl+Shift+Z
+                            Ctrl+Y
+
+Intellisense
+    Show Parameters         Ctrl+P
+    Code Completion         Ctrl+Space
+
+Close Editor Window
+    Close Active            Alt+C
+    Close Others            Alt+Shift+C
+    Close All But Pinned    Ctrl+Shift+C
+    Close All               Ctrl+Alt+Shift+C
+
+Sidebar
+    Open / Close Sidebar    Alt+1
+
+Run App
+    Run...                  Alt+Shift+F10
+    Run                     Shift+F10
+
+Version Control System
+    Commit                  Alt+Shift+K
+    Add                     Ctrl+Alt+A
+
+Code
+    Optimize Imports        Ctrl+Shift+O
+
+Refactor
+    Rename                  Alt+Shift+R
+
+
+--------------------------
+Removed (IntelliJ PyCharm)
+--------------------------
+
+Next / Previous Method
+    Next                    Alt+Up
+    Previous                Alt+Down
+
+Code Navigation
+    Method Hierarchy        Ctrl+Shift+H
+
+Find Next/Previous Occurrence
+    Next                    Ctrl+L
+    Previous                Ctrl+Shift+L
+
+Other
+    Re-run Tests            Alt+Shift+R
