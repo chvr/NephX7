@@ -102,6 +102,7 @@ Run App
 Version Control System
     Commit                  Alt+Shift+K
     Add                     Ctrl+Alt+A
+    Push                    Ctrl+Alt+K
 
 Code
     Optimize Imports        Ctrl+Shift+O
