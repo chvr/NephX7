@@ -1,4 +1,4 @@
-<keymap version="1" name="ChyrosBackup" parent="$default">
+<keymap version="1" name="Chyros" parent="$default">
   <action id="$Redo">
     <keyboard-shortcut first-keystroke="shift control Z" />
     <keyboard-shortcut first-keystroke="shift alt BACK_SPACE" />
@@ -9,17 +9,48 @@
     <mouse-shortcut keystroke="button4" />
     <keyboard-shortcut first-keystroke="alt LEFT" />
   </action>
+  <action id="CallHierarchy">
+    <keyboard-shortcut first-keystroke="control alt H" />
+    <keyboard-shortcut first-keystroke="shift alt H" />
+  </action>
   <action id="ChangesView.Commit">
     <keyboard-shortcut first-keystroke="shift alt K" />
   </action>
+  <action id="CheckinProject" />
+  <action id="CloseAllEditors">
+    <keyboard-shortcut first-keystroke="shift control alt C" />
+  </action>
+  <action id="CloseAllEditorsButActive">
+    <keyboard-shortcut first-keystroke="shift alt C" />
+  </action>
+  <action id="CloseAllUnpinnedEditors">
+    <keyboard-shortcut first-keystroke="shift control C" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="control F4" />
+    <keyboard-shortcut first-keystroke="alt C" />
+  </action>
+  <action id="CollapseRegion">
+    <keyboard-shortcut first-keystroke="control SUBTRACT" />
+    <keyboard-shortcut first-keystroke="control MINUS" />
+    <keyboard-shortcut first-keystroke="shift alt SUBTRACT" />
+  </action>
   <action id="Editor Redo">
     <keyboard-shortcut first-keystroke="control Y" />
+  </action>
+  <action id="EditorAddOrRemoveCaret">
+    <mouse-shortcut keystroke="shift alt button1" />
+    <mouse-shortcut keystroke="alt button1" />
   </action>
   <action id="EditorCloneCaretAbove">
     <keyboard-shortcut first-keystroke="shift alt UP" />
   </action>
   <action id="EditorCloneCaretBelow">
     <keyboard-shortcut first-keystroke="shift alt DOWN" />
+  </action>
+  <action id="EditorDecreaseFontSize">
+    <keyboard-shortcut first-keystroke="control SUBTRACT" />
+    <keyboard-shortcut first-keystroke="control MINUS" />
   </action>
   <action id="EditorDeleteLine">
     <keyboard-shortcut first-keystroke="control D" />
@@ -28,17 +59,33 @@
     <keyboard-shortcut first-keystroke="control D" />
     <keyboard-shortcut first-keystroke="shift control D" />
   </action>
+  <action id="EditorIncreaseFontSize">
+    <keyboard-shortcut first-keystroke="control ADD" />
+    <keyboard-shortcut first-keystroke="control EQUALS" />
+  </action>
   <action id="EditorNextWordInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="control alt RIGHT" />
     <keyboard-shortcut first-keystroke="shift alt RIGHT" />
   </action>
   <action id="EditorPreviousWordInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="control alt LEFT" />
     <keyboard-shortcut first-keystroke="shift alt LEFT" />
+  </action>
+  <action id="EditorResetFontSize">
+    <keyboard-shortcut first-keystroke="control 0" />
+  </action>
+  <action id="ExpandRegion">
+    <keyboard-shortcut first-keystroke="control ADD" />
+    <keyboard-shortcut first-keystroke="control EQUALS" />
+    <keyboard-shortcut first-keystroke="shift alt ADD" />
   </action>
   <action id="FindNext">
     <keyboard-shortcut first-keystroke="F3" />
+    <keyboard-shortcut first-keystroke="control K" />
   </action>
   <action id="FindPrevious">
     <keyboard-shortcut first-keystroke="shift F3" />
+    <keyboard-shortcut first-keystroke="shift control K" />
   </action>
   <action id="FindUsages">
     <keyboard-shortcut first-keystroke="alt F7" />
@@ -49,14 +96,18 @@
     <mouse-shortcut keystroke="button5" />
     <keyboard-shortcut first-keystroke="alt RIGHT" />
   </action>
+  <action id="GotoClass">
+    <keyboard-shortcut first-keystroke="control N" />
+    <keyboard-shortcut first-keystroke="shift alt N" />
+  </action>
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="control B" />
+    <mouse-shortcut keystroke="control button1" />
+    <keyboard-shortcut first-keystroke="alt G" />
+  </action>
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="shift control N" />
     <keyboard-shortcut first-keystroke="shift alt O" />
-  </action>
-  <action id="GotoImplementation">
-    <keyboard-shortcut first-keystroke="control alt B" />
-    <mouse-shortcut keystroke="control alt button1" />
-    <keyboard-shortcut first-keystroke="alt G" />
   </action>
   <action id="GotoNextError">
     <keyboard-shortcut first-keystroke="F2" />
@@ -68,13 +119,15 @@
   </action>
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="shift control alt N" />
-    <keyboard-shortcut first-keystroke="shift control alt O" />
+    <keyboard-shortcut first-keystroke="shift alt S" />
   </action>
   <action id="MethodDown">
+    <keyboard-shortcut first-keystroke="control alt DOWN" />
     <keyboard-shortcut first-keystroke="control PERIOD" />
   </action>
   <action id="MethodUp">
-    <keyboard-shortcut first-keystroke="control COMMA" />
+    <keyboard-shortcut first-keystroke="control alt UP" />
+    <keyboard-shortcut first-keystroke="shift control PERIOD" />
   </action>
   <action id="MoveLineDown">
     <keyboard-shortcut first-keystroke="shift alt DOWN" />
@@ -104,6 +157,10 @@
     <keyboard-shortcut first-keystroke="alt LEFT" />
     <keyboard-shortcut first-keystroke="alt Z" />
   </action>
+  <action id="Refactorings.QuickListPopupAction">
+    <keyboard-shortcut first-keystroke="shift control alt T" />
+    <keyboard-shortcut first-keystroke="shift alt Q" />
+  </action>
   <action id="RenameElement">
     <keyboard-shortcut first-keystroke="shift F6" />
     <keyboard-shortcut first-keystroke="shift alt R" />
@@ -112,6 +169,10 @@
   <action id="ShowSettings">
     <keyboard-shortcut first-keystroke="control alt S" />
     <keyboard-shortcut first-keystroke="alt F7" />
+  </action>
+  <action id="Vcs.Push">
+    <keyboard-shortcut first-keystroke="shift control K" />
+    <keyboard-shortcut first-keystroke="control alt K" />
   </action>
   <action id="VcsShowNextChangeMarker">
     <keyboard-shortcut first-keystroke="shift control alt DOWN" />
