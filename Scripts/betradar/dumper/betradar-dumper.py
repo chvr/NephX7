@@ -18,6 +18,7 @@ HOST, PORT = 'scouttest.betradar.com', 2047
 USER, PWD = 'kambiscout', 'Kambi123'
 
 OUTPUT_FILE = 'all-matches.txt'
+MATCHLIST_FILE = 'matchlist.txt'
 
 ENCODING = 'UTF-8'
 READ_BUFFER_SIZE = 4096
@@ -25,7 +26,7 @@ READ_BUFFER_SIZE = 4096
 SPORTS = ['TENNIS']  # Values must be in UPPERCASE format
 KEEP_ALIVE_INTERVAL_SEC = 5
 MATCHLIST_INTERVAL_SEC = 3600 * 48
-AUTO_SUBSCRIBE = True
+AUTO_SUBSCRIBE = False
 MATCH_ID_AS_OUTPUT_FILE = True
 
 RESPONSE_PADDING = '    '
@@ -100,8 +101,8 @@ class BetRadarMessage:
     def __init__(self):
         pass
 
-    def create_login_request(self):
-        return self.LOGIN_REQ.format(USER, PWD)
+    def create_login_request(self, user=USER, pwd=PWD):
+        return self.LOGIN_REQ.format(user, pwd)
 
     def create_logout_request(self):
         return self.LOGOUT_REQ
@@ -178,7 +179,7 @@ def process_user_input():
     if cmd_params[0] in ['exit', 'quit', 'x', 'q']:
         close()
     elif cmd_params[0] in ['login']:
-        send(betRadarMessage.create_login_request())
+        send(betRadarMessage.create_login_request(*cmd_params[1:]))
     elif cmd_params[0] in ['logout']:
         send(betRadarMessage.create_logout_request())
     elif cmd_params[0] in ['list', 'l']:
@@ -318,6 +319,8 @@ def receive():
 
 def process_response(resp):
     if 'matchlist' in resp:
+        append_to_output_file(resp, MATCHLIST_FILE)
+
         if not AUTO_SUBSCRIBE:
             return
 
@@ -337,8 +340,6 @@ def process_response(resp):
             # Subscribe a match
             send(betRadarMessage.create_subscribe_delta_request(entry.match_id))
             subscribed_matches.append(entry.match_id)
-
-        append_to_output_file(resp, OUTPUT_FILE)
     else:
         if MATCH_ID_AS_OUTPUT_FILE:
             # Write to specific match output file
