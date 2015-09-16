@@ -72,6 +72,7 @@ Code Navigation
     Class Name...           Alt+Shift+N
     -> Next                 Alt+Right
     <- Back                 Alt+Left
+    Test Class              Ctrl+T
 
 Undo/Redo
     Undo                    Ctrl+Z
@@ -102,6 +103,7 @@ Run App
     Run                     Shift+F10
 
 Version Control System
+    Update                  Alt+Shift+U
     Commit                  Alt+Shift+K
     Add                     Ctrl+Alt+A
     Push                    Ctrl+Alt+K

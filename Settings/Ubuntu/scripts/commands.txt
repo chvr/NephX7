@@ -1,0 +1,10 @@
+# Hard links
+# ----------
+
+# Intellij IDEA 14
+mkdir ~/.IntelliJIdea14/config/keymaps
+ln ~/k/wx-k/c/home/IntelliJIdea14/config/keymaps/Chyros.xml ~/.IntelliJIdea14/config/keymaps/Chyros.xml
+
+# PyCharm 40
+mkdir ~/.PyCharm40/config/keymaps
+ln ~/k/wx-k/c/home/PyCharm40/config/keymaps/Chyros.xml ~/.PyCharm40/config/keymaps/Chyros.xml
