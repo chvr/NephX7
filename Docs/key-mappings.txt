@@ -106,10 +106,12 @@ Version Control System
     Update                  Alt+Shift+U
     Commit                  Alt+Shift+K
     Add                     Ctrl+Alt+A
+    Pull                    Ctrl+Alt+U
     Push                    Ctrl+Alt+K
 
 Code
     Optimize Imports        Ctrl+Shift+O
+    Toggle Case             Ctrl+Shift+U
 
 Refactor
     Menu                    Alt+Shift+Q

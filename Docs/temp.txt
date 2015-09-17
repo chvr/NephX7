@@ -1,0 +1,7 @@
+mkdir C:\Users\ChyrosNX\.PyCharm40\config\keymaps
+mklink /h C:\Users\ChyrosNX\.PyCharm40\config\keymaps\Chyros.xml C:\Users\ChyrosNX\OneDrive\wx-k\c\home\PyCharm40\config\keymaps\Chyros.xml
+
+mkdir C:\Users\ChyrosNX\.IntelliJIdea14\config\keymaps
+mklink /h C:\Users\ChyrosNX\.IntelliJIdea14\config\keymaps\Chyros.xml C:\Users\ChyrosNX\OneDrive\wx-k\c\home\IntelliJIdea14\config\keymaps\Chyros.xml
+
+# TODO: Add Git/Mercurial Push/Pull on IntelliJ IDEA 14 as well
