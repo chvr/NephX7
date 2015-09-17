@@ -1,10 +1,22 @@
-# Hard links
-# ----------
+# Hard links (Ubuntu)
+# -------------------
+
+# PyCharm 40
+mkdir ~/.PyCharm40/config/keymaps
+ln ~/k/wx-k/c/home/PyCharm40/config/keymaps/Chyros.xml ~/.PyCharm40/config/keymaps/Chyros.xml
 
 # Intellij IDEA 14
 mkdir ~/.IntelliJIdea14/config/keymaps
 ln ~/k/wx-k/c/home/IntelliJIdea14/config/keymaps/Chyros.xml ~/.IntelliJIdea14/config/keymaps/Chyros.xml
 
+
+# Hard links (Win)
+# ----------------
+
 # PyCharm 40
-mkdir ~/.PyCharm40/config/keymaps
-ln ~/k/wx-k/c/home/PyCharm40/config/keymaps/Chyros.xml ~/.PyCharm40/config/keymaps/Chyros.xml
+mkdir C:\Users\ChyrosNX\.PyCharm40\config\keymaps
+mklink /h C:\Users\ChyrosNX\.PyCharm40\config\keymaps\Chyros.xml C:\Users\ChyrosNX\OneDrive\wx-k\c\home\PyCharm40\config\keymaps\Chyros.xml
+
+# Intellij IDEA 14
+mkdir C:\Users\ChyrosNX\.IntelliJIdea14\config\keymaps
+mklink /h C:\Users\ChyrosNX\.IntelliJIdea14\config\keymaps\Chyros.xml C:\Users\ChyrosNX\OneDrive\wx-k\c\home\IntelliJIdea14\config\keymaps\Chyros.xml
